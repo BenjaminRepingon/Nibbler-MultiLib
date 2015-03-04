@@ -6,10 +6,11 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 16:17:22 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 16:28:30 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/04 17:14:28 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "MlxLib.hpp"
 
 MlxLib::MlxLib( void )
@@ -24,5 +25,6 @@ MlxLib::~MlxLib( void )
 
 bool		MlxLib::isCloseRequest( void )
 {
-	return ( 0 );
+	std::cerr << "isCloseRequest" << std::endl;
+	return ( false );
 }

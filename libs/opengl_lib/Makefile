@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/04 16:42:26 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/04 17:02:38 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC			=	g++
 
 CFLAGS		=	-Wall -Wextra -Werror -pedantic -ansi -O3
 
-SRC_LIB		=	$(NAME).cpp
+SRC_LIB		=	$(NAME).cpp		\
+				OpenglLib.cpp
 
 OBJ_LIB		=	$(SRC_LIB:.cpp=.o)
 

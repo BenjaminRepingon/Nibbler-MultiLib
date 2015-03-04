@@ -6,7 +6,14 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 14:30:00 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 14:30:02 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/04 16:46:01 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "OpenglLib.hpp"
+
+extern "C"
+ILib *		getInstance( void )
+{
+	return ( new OpenglLib() );
+}
