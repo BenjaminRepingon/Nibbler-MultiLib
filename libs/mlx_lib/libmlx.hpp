@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RenderLib.hpp                                      :+:      :+:    :+:   */
+/*   libmlx.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 16:52:08 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/03 17:12:00 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 14:33:53 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 16:29:44 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_LIB_HPP
-# define RENDER_LIB_HPP
+#ifndef LIBMLX_HPP
+# define LIBMLX_HPP
+# include "../../ILib.hpp"
 
-#warning "TODO: copilian form for RenderLib"
-class RenderLib
-{
-public:
-	RenderLib( void );
-	~RenderLib( void );
-
-};
+extern "C"
+ILib *		getInstance( void );
 
 #endif

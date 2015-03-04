@@ -6,18 +6,30 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:03:16 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/03 17:54:19 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/04 16:23:38 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_ENGINE_HPP
 # define CORE_ENGINE_HPP
-# include "./render/RenderLib.hpp"
+# include <iostream>
+# include "../../ILib.hpp"
+# include "AGame.hpp"
+
+#ifndef TRUE
+# define TRUE ( 1 )
+#endif
+#ifndef FALSE
+# define FALSE ( 0 )
+#endif
+#ifndef NULL
+# define NULL ( 0 )
+#endif
 
 class CoreEngine
 {
 public:
-	CoreEngine( RenderLib * renderLib );
+	CoreEngine( ILib * lib );
 	CoreEngine( CoreEngine const & src );
 	~CoreEngine( void );
 
@@ -29,17 +41,18 @@ public:
 	/*
 	**	GETTER
 	*/
-	RenderLib *				getRenderLib( void ) const;
+	ILib *					getRenderLib( void ) const;
 
 	/*
 	**	SETTER
 	*/
-	void					setrenderLib( RenderLib * renderLib );
+	void					setrenderLib( ILib * renderLib );
 
 private:
 	CoreEngine( void );
 
-	RenderLib *				_renderLib;
+	ILib *					_renderLib;
+	AGame *					_game;
 	bool					_isRunning;
 };
 

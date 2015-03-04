@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   MlxLib.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 12:04:42 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 16:17:22 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 16:28:30 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#include "MlxLib.hpp"
 
-Nibbler::Nibbler( void )
+MlxLib::MlxLib( void )
 {
 	return ;
 }
 
-Nibbler::~Nibbler( void )
+MlxLib::~MlxLib( void )
 {
 	return ;
 }
 
-int				Nibbler::init( void )
+bool		MlxLib::isCloseRequest( void )
 {
 	return ( 0 );
 }

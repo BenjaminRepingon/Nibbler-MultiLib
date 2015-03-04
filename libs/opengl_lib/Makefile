@@ -5,66 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/03/03 16:05:59 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/04 16:39:39 by rbenjami         ###   ########.fr        #
+#    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
+#    Updated: 2015/03/04 16:42:26 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#DEV, BUID
-MODE			=	DEV
+NAME		=	libopengl
 
-ifeq ($(MODE), DEV)
-	CPPFLAGS	=	-Wall -Wextra -ansi -O3
-else
-	CPPFLAGS	=	-Wall -Wextra -Werror -pedantic -ansi -O3
-endif
+CC			=	g++
 
-CC				=	g++
+CFLAGS		=	-Wall -Wextra -Werror -pedantic -ansi -O3
 
-NAME			=	nibbler
+SRC_LIB		=	$(NAME).cpp
 
-SRCS_DIR		=	srcs
+OBJ_LIB		=	$(SRC_LIB:.cpp=.o)
 
-FILES			=	$(NAME).cpp					\
-					core/CoreEngine.cpp			\
-					game/Nibbler.cpp
-
-SRCS			=	$(addprefix $(SRCS_DIR)/, $(FILES))
-
-OBJS			=	$(SRCS:.cpp=.o)
+HEAD		=	$(NAME).hpp
 
 
-all:			$(NAME) libmlx.dylib libncurses.dylib libopengl.dylib
+all:		$(NAME).dylib
 
-$(NAME):		$(OBJS)
-	@$(CC) -o $(NAME) $(OBJS)
+$(NAME).dylib:	$(OBJ_LIB)
+	@g++ -shared -o $(NAME).dylib $(OBJ_LIB)
 	@printf "\033[33mCompilation of %-40s \033[34m[\033[32m✔\033[34m]\033[0m\n" $(NAME)
 
-%.o:			%.cpp
+%.o:		%.cpp $(HEAD)
+	@$(CC) $(CFLAGS) -fpic -c $< -o $@
 	@printf "\t%-54s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
-	@$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	@printf "\033[31mRemove %s objects\033[0m\n" $(NAME)
-	@rm -rf $(OBJS)
-	@(cd ./libs/mlx_lib && $(MAKE) $@)
-	@(cd ./libs/ncurses_lib && $(MAKE) $@)
-	@(cd ./libs/opengl_lib && $(MAKE) $@)
+	@rm -rf $(OBJ_LIB)
 
 fclean:			clean
 	@printf "\033[31mRemove binary\033[0m\n"
-	@rm -rf $(NAME)
+	@rm -rf $(NAME).dylib
 
-re:				fclean all
+re:			fclean all
 
-libmlx.dylib:
-	@make -C libs/mlx_lib
-
-libncurses.dylib:
-	@make -C libs/ncurses_lib
-
-libopengl.dylib:
-	@make -C libs/opengl_lib
-
-.PHONY: all, clean, fclean, re
-
+.PHONY:		all re fclean clean

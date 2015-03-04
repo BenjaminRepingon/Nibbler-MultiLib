@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   tests.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 12:04:42 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 14:22:15 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 16:17:05 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#include <libmlx.hpp>
 
-Nibbler::Nibbler( void )
+int		main( void )
 {
-	return ;
-}
+	ILib *	lib;
 
-Nibbler::~Nibbler( void )
-{
-	return ;
-}
-
-int				Nibbler::init( void )
-{
+	lib = getInstance();
 	return ( 0 );
 }

@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   tests.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 12:04:42 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 14:28:04 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 15:00:10 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#include <libopengl.hpp>
 
-Nibbler::Nibbler( void )
-{
-	return ;
-}
-
-Nibbler::~Nibbler( void )
-{
-	return ;
-}
-
-int				Nibbler::init( void )
+int		main( void )
 {
 	return ( 0 );
 }

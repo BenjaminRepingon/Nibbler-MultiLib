@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RenderLib.cpp                                      :+:      :+:    :+:   */
+/*   libmlx.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 16:51:55 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/03 17:08:01 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 13:16:52 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 16:24:57 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RenderLib.hpp"
+#include "MlxLib.hpp"
 
-RenderLib::RenderLib( void )
+extern "C"
+ILib *		getInstance( void )
 {
-	return ;
-}
-
-RenderLib::~RenderLib( void )
-{
-	return ;
+	return ( new MlxLib() );
 }

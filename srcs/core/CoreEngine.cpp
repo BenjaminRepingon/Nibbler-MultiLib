@@ -6,14 +6,16 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/03 18:02:51 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/04 16:23:04 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "CoreEngine.hpp"
 
-CoreEngine::CoreEngine( RenderLib * renderLib ) :
-	_renderLib( renderLib )
+CoreEngine::CoreEngine( ILib * lib ) :
+	_renderLib( lib ),
+	_game( NULL ),
+	_isRunning( FALSE )
 {
 	return ;
 }
@@ -40,18 +42,41 @@ CoreEngine &	CoreEngine::operator=( CoreEngine const & rhs )
 
 bool			CoreEngine::start( void )
 {
-	return ( 1 );
+	if ( this->_isRunning == TRUE )
+	{
+		std::cerr << "CoreEngine alrady running !" << std::endl;
+		return ( FALSE );
+	}
+	// if ( this->_game == NULL )
+	// {
+	// 	std::cerr << "CoreEngine need a game !" << std::endl;
+	// 	return ( FALSE );
+	// }
+	this->_isRunning = TRUE;
+	// this->_game->init();
+	while ( this->_isRunning )
+	{
+		if ( this->_renderLib->isCloseRequest() )
+		{
+			this->stop();
+			break ;
+		}
+	}
+	return ( TRUE );
 }
 
 bool			CoreEngine::stop( void )
 {
-	return ( 1 );
+	if ( ! this->_isRunning )
+		return ( FALSE );
+	this->_isRunning = FALSE;
+	return ( TRUE );
 }
 
 /*
 **	GETTER
 */
-RenderLib *		CoreEngine::getRenderLib( void ) const
+ILib *			CoreEngine::getRenderLib( void ) const
 {
 	return ( this->_renderLib );
 }
@@ -59,7 +84,7 @@ RenderLib *		CoreEngine::getRenderLib( void ) const
 /*
 **	SETTER
 */
-void			CoreEngine::setrenderLib( RenderLib * renderLib )
+void			CoreEngine::setrenderLib( ILib * renderLib )
 {
 	this->_renderLib = renderLib;
 	return ;

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   NcursesLib.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 12:04:42 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 16:40:13 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 16:40:39 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#ifndef NCURSES_LIB_HPP
+# define NCURSES_LIB_HPP
+# include "../../ILib.hpp"
 
-Nibbler::Nibbler( void )
+class NcursesLib : public ILib
 {
-	return ;
-}
+public:
+	NcursesLib( void );
+	~NcursesLib( void );
 
-Nibbler::~Nibbler( void )
-{
-	return ;
-}
+	bool		isCloseRequest( void );
 
-int				Nibbler::init( void )
-{
-	return ( 0 );
-}
+};
+
+#endif

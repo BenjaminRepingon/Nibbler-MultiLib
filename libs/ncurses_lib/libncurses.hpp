@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   libncurses.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 12:04:42 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 14:58:33 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/04 14:58:46 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#ifndef LIBNCURSES_HPP
+# define LIBNCURSES_HPP
 
-Nibbler::Nibbler( void )
-{
-	return ;
-}
 
-Nibbler::~Nibbler( void )
-{
-	return ;
-}
 
-int				Nibbler::init( void )
-{
-	return ( 0 );
-}
+#endif
