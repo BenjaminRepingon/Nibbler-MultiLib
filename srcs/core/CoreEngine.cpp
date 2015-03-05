@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:26:34 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:37:29 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool			CoreEngine::start( void )
 		dt = (endFrame - startFrame);
 		usleep( (SECOND / this->_fps) - (dt * SECOND) );
 #if DEBUG
-		std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
+		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
 #endif
 	}
 	return ( true );
@@ -98,6 +98,7 @@ bool			CoreEngine::stop( void )
 {
 	if ( ! this->_isRunning )
 		return ( false );
+	this->_renderLib->destroyWindow();
 	this->_isRunning = false;
 	return ( true );
 }

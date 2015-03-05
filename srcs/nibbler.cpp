@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:04:58 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 16:53:45 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:33:06 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int		main(/*int argc, char const *argv[]*/)
 	ILib *			lib;
 	void *			handle;
 	ILib *			(*f)( void );
+	char *			err;
 
-	handle = dlopen( "./libs/mlx_lib/libmlx.dylib", RTLD_NOW );
+	handle = dlopen( "./libs/ncurses_lib/libncurses.dylib", RTLD_NOW );
+	if ( (err = dlerror()) != NULL )
+	{
+		std::cerr << err << std::endl;
+		return ( -1 );
+	}
 	f = ( ILib *(*)() ) dlsym( handle, "getInstance" );
 	lib = f();
 	core = new CoreEngine( 60, lib );

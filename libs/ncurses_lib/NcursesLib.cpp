@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 16:40:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 16:40:52 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:36:24 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,45 @@ NcursesLib::~NcursesLib( void )
 
 bool		NcursesLib::isCloseRequest( void )
 {
-	return ( 0 );
+	return ( getch() == 27 );
 }
 
-bool NcursesLib::createWindow( int height, int width, std::string title)
-{	
+bool		NcursesLib::createWindow( int height, int width, std::string title)
+{
 	this->_title = title;
 
 	initscr();
 	cbreak();
-	nodelay(stdscr, TRUE);
-	keypad(stdscr, TRUE);
+	nodelay( stdscr, true );
+	keypad( stdscr, true );
 	noecho();
-	curs_set(0);
-	this->_window = newwin(height, width, 0, 0);
+	curs_set( 0 );
+	this->_window = newwin( height, width, 0, 0 );
 	wrefresh(this->_window);
-	return TRUE;
+	return ( true );
 }
 
-bool NcursesLib::refreshWindow( void )
+bool		NcursesLib::refreshWindow( void )
 {
 	wrefresh( this->_window );
-	return TRUE;
+	return ( true );
 }
 
-bool NcursesLib::destroyWindow( void )
+bool		NcursesLib::destroyWindow( void )
 {
 	delwin( this->_window );
 	endwin( );
-	return TRUE;
+	return ( true );
 }
 
-bool NcursesLib::clearWindow( void )
+bool		NcursesLib::clearWindow( void )
 {
 	// wclear(this->_window); seems to be too slow
 	clear( );
-	return TRUE;
+	return ( true );
 }
 
-int	NcursesLib::getKeyPressed( void )
+int			NcursesLib::getKeyPressed( void )
 {
 	return getch( );
 }
