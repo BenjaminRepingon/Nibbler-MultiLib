@@ -27,7 +27,7 @@ bool		NcursesLib::isCloseRequest( void )
 	return ( 0 );
 }
 
-void NcursesLib::createWindow( int height, int width, std::string title)
+bool NcursesLib::createWindow( int height, int width, std::string title)
 {	
 	this->_title = title;
 
@@ -39,23 +39,27 @@ void NcursesLib::createWindow( int height, int width, std::string title)
 	curs_set(0);
 	this->_window = newwin(height, width, 0, 0);
 	wrefresh(this->_window);
+	return TRUE;
 }
 
-void NcursesLib::refreshWindow( void )
+bool NcursesLib::refreshWindow( void )
 {
 	wrefresh( this->_window );
+	return TRUE;
 }
 
-void NcursesLib::destroyWindow( void )
+bool NcursesLib::destroyWindow( void )
 {
 	delwin( this->_window );
 	endwin( );
+	return TRUE;
 }
 
-void NcursesLib::clearWindow( void )
+bool NcursesLib::clearWindow( void )
 {
 	// wclear(this->_window); seems to be too slow
 	clear( );
+	return TRUE;
 }
 
 int	NcursesLib::getKeyPressed( void )
