@@ -27,14 +27,14 @@ mlx_tests:
 	@./mlx$(NAME)
 
 ncurses_tests:
-	@(cd ./mlx_lib && $(MAKE) re)
-	@g++ -DLIB='"./ncurses_lib/libncurses.dylib"' tests.cpp -o ncurses$(NAME)
+	@(cd ./ncurses_lib && $(MAKE) re)
+	@g++ -lncurses -DLIB='"./ncurses_lib/libncurses.dylib"' tests.cpp -o ncurses$(NAME)
 	@printf "\n\033[31m_____________________\033[32m \
 	NCURSES TESTS \033[31m_____________________\033[0m\n"
 	@./ncurses$(NAME)
 
 opengl_tests:
-	@(cd ./mlx_lib && $(MAKE) re)
+	@(cd ./opengl_lib && $(MAKE) re)
 	@g++ -DLIB='"./opengl_lib/libopengl.dylib"' tests.cpp -o opengl$(NAME)
 	@printf "\n\033[31m_____________________\033[32m \
 	OPENGL TESTS \033[31m______________________\033[0m\n"

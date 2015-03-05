@@ -27,7 +27,7 @@ HEAD		=	$(NAME).hpp
 all:		$(NAME).dylib
 
 $(NAME).dylib:	$(OBJ_LIB)
-	@g++ -shared -o $(NAME).dylib $(OBJ_LIB)
+	@g++ -lncurses -shared -o $(NAME).dylib $(OBJ_LIB)
 	@printf "\033[33mCompilation of %-40s \033[34m[\033[32m✔\033[34m]\033[0m\n" $(NAME)
 
 %.o:		%.cpp $(HEAD)

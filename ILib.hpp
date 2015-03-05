@@ -12,11 +12,17 @@
 
 #ifndef I_LIB_HPP
 # define I_LIB_HPP
+# include <iostream>
 
 class ILib
 {
 public:
 	virtual bool		isCloseRequest( void ) = 0;
+	virtual void		createWindow( int height, int width, std::string title) = 0;
+	virtual void		refreshWindow( void ) = 0;
+	virtual void		destroyWindow( void ) = 0;
+	virtual void		clearWindow( void ) = 0;
+	virtual	int			getKeyPressed( void ) = 0;
 };
 
 #endif
