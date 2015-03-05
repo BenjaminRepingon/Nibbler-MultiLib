@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 14:22:15 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 17:19:43 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:24:22 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int		main( void )
 	}
 
 	lib->destroyWindow();
-
 
 
 	return ( 0 );

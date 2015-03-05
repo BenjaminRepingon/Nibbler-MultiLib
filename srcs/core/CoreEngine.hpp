@@ -6,30 +6,23 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:03:16 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 16:23:38 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 16:22:58 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_ENGINE_HPP
 # define CORE_ENGINE_HPP
 # include <iostream>
-# include "../../ILib.hpp"
+# include <sys/time.h>
+# include <unistd.h>
 # include "AGame.hpp"
 
-#ifndef TRUE
-# define TRUE ( 1 )
-#endif
-#ifndef FALSE
-# define FALSE ( 0 )
-#endif
-#ifndef NULL
-# define NULL ( 0 )
-#endif
+# define SECOND		(1000000.0)
 
 class CoreEngine
 {
 public:
-	CoreEngine( ILib * lib );
+	CoreEngine( float fps, ILib * lib );
 	CoreEngine( CoreEngine const & src );
 	~CoreEngine( void );
 
@@ -47,10 +40,13 @@ public:
 	**	SETTER
 	*/
 	void					setrenderLib( ILib * renderLib );
+	void					setGame( AGame * game );
 
 private:
 	CoreEngine( void );
+	double					getTime( void );
 
+	float					_fps;
 	ILib *					_renderLib;
 	AGame *					_game;
 	bool					_isRunning;

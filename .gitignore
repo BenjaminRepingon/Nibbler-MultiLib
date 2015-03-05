@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+
+libs/mlxtests
+libs/ncursestests
+libs/opengltests
+
