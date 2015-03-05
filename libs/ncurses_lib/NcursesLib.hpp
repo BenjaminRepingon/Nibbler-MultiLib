@@ -22,10 +22,10 @@ public:
 	~NcursesLib( void );
 
 	bool		isCloseRequest( void );
-	void		createWindow( int height, int width, std::string title );
-	void		refreshWindow( void );
-	void		destroyWindow( void );
-	void		clearWindow( void );
+	bool		createWindow( int height, int width, std::string title );
+	bool		refreshWindow( void );
+	bool		destroyWindow( void );
+	bool		clearWindow( void );
 	int			getKeyPressed( void );
 private:
 	std::string _title;
