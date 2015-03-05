@@ -66,3 +66,13 @@ int	NcursesLib::getKeyPressed( void )
 {
 	return getch( );
 }
+
+void NcursesLib::drawSquare(int posX, int posY, int size)
+{
+	for (int x = 0; x < size; x++)
+	{
+			for (int y = 0; y < size; y++)
+				mvprintw(posX + x, posY + y, "*");
+	}
+	
+}

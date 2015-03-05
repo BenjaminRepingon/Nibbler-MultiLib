@@ -23,6 +23,7 @@ public:
 	virtual bool		destroyWindow( void ) = 0;
 	virtual bool		clearWindow( void ) = 0;
 	virtual	int			getKeyPressed( void ) = 0;
+	virtual void		drawSquare(int posX, int posY, int size) = 0;
 };
 
 #endif

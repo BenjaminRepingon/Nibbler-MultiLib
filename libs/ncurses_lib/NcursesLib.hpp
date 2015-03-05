@@ -27,6 +27,7 @@ public:
 	bool		destroyWindow( void );
 	bool		clearWindow( void );
 	int			getKeyPressed( void );
+	void		drawSquare(int posX, int posY, int size);
 private:
 	std::string _title;
 	WINDOW*		_window;

@@ -40,7 +40,7 @@ int		main( void )
 			y--;
 		else if (ch == KEY_RIGHT)
 			y++;
-		mvprintw(x, y, "yolooo");
+		lib->drawSquare(x,y, 2);
 		lib->refreshWindow();
 	}
 
