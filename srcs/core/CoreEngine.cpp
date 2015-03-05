@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:20:33 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:26:34 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ bool			CoreEngine::start( void )
 		std::cerr << "CoreEngine need a game !" << std::endl;
 		return ( false );
 	}
-	if ( this->_renderLib->createWindow( 850, 550, "Test" ) )
+	if ( ! this->_renderLib->createWindow( 850, 550, "Test" ) )
+	{
+		std::cerr << "Failed to create window !" << std::endl;
+		return ( false );
+	}
 	this->_isRunning = true;
 	this->_game->init();
 	while ( this->_isRunning )
