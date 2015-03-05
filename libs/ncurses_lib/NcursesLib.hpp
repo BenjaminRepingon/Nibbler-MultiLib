@@ -12,6 +12,7 @@
 
 #ifndef NCURSES_LIB_HPP
 # define NCURSES_LIB_HPP
+# include <ncurses.h>
 # include "../../ILib.hpp"
 
 class NcursesLib : public ILib
@@ -21,7 +22,14 @@ public:
 	~NcursesLib( void );
 
 	bool		isCloseRequest( void );
-
+	void		createWindow( int height, int width, std::string title );
+	void		refreshWindow( void );
+	void		destroyWindow( void );
+	void		clearWindow( void );
+	int			getKeyPressed( void );
+private:
+	std::string _title;
+	WINDOW*		_window;
 };
 
 #endif
