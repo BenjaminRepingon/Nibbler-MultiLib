@@ -6,16 +6,17 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 16:23:04 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/05 17:20:33 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "CoreEngine.hpp"
 
-CoreEngine::CoreEngine( ILib * lib ) :
+CoreEngine::CoreEngine( float fps, ILib * lib ) :
+	_fps( fps ),
 	_renderLib( lib ),
-	_game( NULL ),
-	_isRunning( FALSE )
+	_game( nullptr ),
+	_isRunning( false )
 {
 	return ;
 }
@@ -40,37 +41,61 @@ CoreEngine &	CoreEngine::operator=( CoreEngine const & rhs )
 	return ( * this );
 }
 
+double			CoreEngine::getTime( void )
+{
+	struct timeval		tv;
+
+	gettimeofday( &tv, NULL );
+	return ( tv.tv_sec + (double)tv.tv_usec / SECOND );
+}
+
 bool			CoreEngine::start( void )
 {
-	if ( this->_isRunning == TRUE )
+	double		startFrame;
+	double		endFrame;
+	double		dt;
+
+	if ( this->_isRunning == true )
 	{
 		std::cerr << "CoreEngine alrady running !" << std::endl;
-		return ( FALSE );
+		return ( false );
 	}
-	// if ( this->_game == NULL )
-	// {
-	// 	std::cerr << "CoreEngine need a game !" << std::endl;
-	// 	return ( FALSE );
-	// }
-	this->_isRunning = TRUE;
-	// this->_game->init();
+	if ( this->_game == nullptr )
+	{
+		std::cerr << "CoreEngine need a game !" << std::endl;
+		return ( false );
+	}
+	if ( this->_renderLib->createWindow( 850, 550, "Test" ) )
+	this->_isRunning = true;
+	this->_game->init();
 	while ( this->_isRunning )
 	{
+		startFrame = this->getTime();
 		if ( this->_renderLib->isCloseRequest() )
 		{
 			this->stop();
 			break ;
 		}
+
+		this->_game->update( dt );
+		this->_game->render( this->_renderLib );
+
+		endFrame = this->getTime();
+		dt = (endFrame - startFrame);
+		usleep( (SECOND / this->_fps) - (dt * SECOND) );
+#if DEBUG
+		std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
+#endif
 	}
-	return ( TRUE );
+	return ( true );
 }
 
 bool			CoreEngine::stop( void )
 {
 	if ( ! this->_isRunning )
-		return ( FALSE );
-	this->_isRunning = FALSE;
-	return ( TRUE );
+		return ( false );
+	this->_isRunning = false;
+	return ( true );
 }
 
 /*
@@ -87,5 +112,11 @@ ILib *			CoreEngine::getRenderLib( void ) const
 void			CoreEngine::setrenderLib( ILib * renderLib )
 {
 	this->_renderLib = renderLib;
+	return ;
+}
+
+void			CoreEngine::setGame( AGame * game )
+{
+	this->_game = game;
 	return ;
 }

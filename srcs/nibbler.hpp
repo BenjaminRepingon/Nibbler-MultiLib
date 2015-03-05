@@ -1,32 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.cpp                                          :+:      :+:    :+:   */
+/*   nibbler.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/04 14:22:15 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 14:54:02 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/05 15:19:31 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/05 15:19:33 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <dlfcn.h>
-#include <assert.h>
-#include "../ILib.hpp"
-
-int		main( void )
-{
-	ILib *			lib;
-	void *			handle;
-	ILib *			(*f)( void );
-
-	handle = dlopen( LIB, RTLD_NOW );
-	f = ( ILib *(*)() ) dlsym( handle, "getInstance" );
-	lib = f();
-
-	assert( lib->isCloseRequest() == 0 );
-
-
-
-	return ( 0 );
-}

@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AGame.hpp                                          :+:      :+:    :+:   */
+/*   IComponent.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:38:50 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 15:50:23 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/05 15:32:03 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/05 15:41:43 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_GAME_HPP
-# define A_GAME_HPP
-# include <vector>
-# include <iostream>
-# include "GameObject.hpp"
+#ifndef I_COMPONENT_HPP
+# define I_COMPONENT_HPP
 # include "../../ILib.hpp"
 
-class AGame
+class IComponent
 {
 public:
-	virtual ~AGame( void ) {};
-
-	virtual int					init( void ) = 0;
-	virtual int					addObject( GameObject * object );
-	virtual int					update( double delta );
-	virtual int					render( ILib const * lib ) const;
-
-protected:
-	std::vector<GameObject *>		_objects;
+	virtual int					update( double delta ) = 0;
+	virtual int					render( ILib const * lib ) const = 0;
 };
 
 #endif

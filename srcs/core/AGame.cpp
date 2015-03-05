@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Nibbler.cpp                                        :+:      :+:    :+:   */
+/*   AGame.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 16:10:32 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/05 15:46:14 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/05 15:50:38 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Nibbler.hpp"
+#include "AGame.hpp"
 
-#warning "TODO: copilian form for Nibbler"
-Nibbler::Nibbler( void )
+int			AGame::addObject( GameObject * object )
 {
-	return ;
+	this->_objects.push_back( object );
+	return ( true );
 }
 
-Nibbler::~Nibbler( void )
+int			AGame::update( double delta )
 {
-	return ;
+	for ( size_t i = 0; i < this->_objects.size(); i++ )
+		this->_objects[i]->update( delta );
+	return ( true );
 }
-
-int				Nibbler::init( void )
+int			AGame::render( ILib const * lib ) const
 {
+	for ( size_t i = 0; i < this->_objects.size(); i++ )
+		this->_objects[i]->render( lib );
 	return ( true );
 }

@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/03 16:05:59 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/04 16:39:39 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/05 16:57:36 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 MODE			=	DEV
 
 ifeq ($(MODE), DEV)
-	CPPFLAGS	=	-Wall -Wextra -ansi -O3
+	CPPFLAGS	=	-Wall -Wextra -ansi -O3 -DDEBUG
 else
 	CPPFLAGS	=	-Wall -Wextra -Werror -pedantic -ansi -O3
 endif
@@ -25,23 +25,33 @@ NAME			=	nibbler
 
 SRCS_DIR		=	srcs
 
-FILES			=	$(NAME).cpp					\
-					core/CoreEngine.cpp			\
-					game/Nibbler.cpp
+FILES			=	$(NAME).cpp						\
+					core/CoreEngine.cpp				\
+					core/GameObject.cpp				\
+					core/AGame.cpp					\
+					\
+					game/Nibbler.cpp				\
+					game/components/SnakePart.cpp	\
+					game/objects/Snake.cpp			\
+
 
 SRCS			=	$(addprefix $(SRCS_DIR)/, $(FILES))
 
 OBJS			=	$(SRCS:.cpp=.o)
 
+HEADS			=	$(SRCS:.cpp=.hpp)			\
+					srcs/core/AGame.hpp
 
-all:			$(NAME) libmlx.dylib libncurses.dylib libopengl.dylib
+all:			$(NAME)
 
 $(NAME):		$(OBJS)
 	@$(CC) -o $(NAME) $(OBJS)
 	@printf "\033[33mCompilation of %-40s \033[34m[\033[32m✔\033[34m]\033[0m\n" $(NAME)
 
+$(OBJS):		$(HEADS)
+
 %.o:			%.cpp
-	@printf "\t%-54s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
+	@printf "\t\033[36m-> %-45s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
 	@$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
@@ -56,15 +66,6 @@ fclean:			clean
 	@rm -rf $(NAME)
 
 re:				fclean all
-
-libmlx.dylib:
-	@make -C libs/mlx_lib
-
-libncurses.dylib:
-	@make -C libs/ncurses_lib
-
-libopengl.dylib:
-	@make -C libs/opengl_lib
 
 .PHONY: all, clean, fclean, re
 
