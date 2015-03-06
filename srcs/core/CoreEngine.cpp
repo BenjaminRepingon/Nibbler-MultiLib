@@ -15,7 +15,7 @@
 CoreEngine::CoreEngine( float fps, ILib * lib ) :
 	_fps( fps ),
 	_renderLib( lib ),
-	_game( nullptr ),
+	_game( NULL ),
 	_isRunning( false )
 {
 	return ;
@@ -60,7 +60,7 @@ bool			CoreEngine::start( void )
 		std::cerr << "CoreEngine alrady running !" << std::endl;
 		return ( false );
 	}
-	if ( this->_game == nullptr )
+	if ( this->_game == NULL )
 	{
 		std::cerr << "CoreEngine need a game !" << std::endl;
 		return ( false );
