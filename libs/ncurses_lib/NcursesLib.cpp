@@ -62,9 +62,31 @@ bool		NcursesLib::clearWindow( void )
 	return ( true );
 }
 
-int			NcursesLib::getKeyPressed( void )
+void		NcursesLib::updateKeys( void )
 {
-	return getch( );
+	static int keyLink[][2] = 
+	{
+		{ESC, 27},
+		{RIGHT, KEY_RIGHT},
+		{LEFT, KEY_LEFT},
+		{UP, KEY_UP},
+		{DOWN, KEY_DOWN},
+		{F1, '1'},
+		{F2, '2'},
+		{F3, '3'}
+	};
+
+	int ch;
+	ch = getch();
+	for (int i = 0; i < SIZEOF; i++)
+	{
+		this->_keys[i] = (keyLink[i][1] == ch);
+	}
+}
+
+bool		NcursesLib::isKeyPressed( e_key key )
+{
+	return (this->_keys[key]);
 }
 
 void NcursesLib::drawSquare(int posX, int posY, int size)

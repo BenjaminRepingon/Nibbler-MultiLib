@@ -13,6 +13,7 @@
 #ifndef NCURSES_LIB_HPP
 # define NCURSES_LIB_HPP
 # include <ncurses.h>
+# include <vector>
 # include "../../ILib.hpp"
 
 class NcursesLib : public ILib
@@ -21,16 +22,20 @@ public:
 	NcursesLib( void );
 	~NcursesLib( void );
 
-	bool		isCloseRequest( void );
-	bool		createWindow( int height, int width, std::string title );
-	bool		refreshWindow( void );
-	bool		destroyWindow( void );
-	bool		clearWindow( void );
-	int			getKeyPressed( void );
-	void		drawSquare(int posX, int posY, int size);
+	bool				isCloseRequest( void );
+	bool				createWindow( int height, int width, std::string title );
+	bool				refreshWindow( void );
+	bool				destroyWindow( void );
+	bool				clearWindow( void );
+	bool				isKeyPressed( e_key );
+	void				updateKeys( void );
+	void				drawSquare(int posX, int posY, int size);
+
 private:
-	std::string _title;
-	WINDOW*		_window;
+	std::string 		_title;
+	WINDOW*				_window;
+	bool				_keys[SIZEOF];
+
 };
 
 #endif

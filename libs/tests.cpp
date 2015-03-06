@@ -13,6 +13,7 @@
 #include <dlfcn.h>
 #include <assert.h>
 #include <ncurses.h>
+#include <unistd.h>
 #include "../ILib.hpp"
 
 int		main( void )
@@ -29,23 +30,24 @@ int		main( void )
 
 	lib->createWindow(2, 20, "prout");
 	int ch = 0, x = 0, y = 0;
-	while((ch = lib->getKeyPressed()) != 27)
+	lib->updateKeys();
+
+	while(!lib->isKeyPressed(ILib::ESC))
 	{
 		lib->clearWindow();
-		if (ch == KEY_DOWN)
+		if (lib->isKeyPressed(ILib::DOWN))
 			x++;
-		else if (ch == KEY_UP)
+		else if (lib->isKeyPressed(ILib::UP))
 			x--;
-		else if (ch == KEY_LEFT)
+		else if (lib->isKeyPressed(ILib::LEFT))
 			y--;
-		else if (ch == KEY_RIGHT)
+		else if (lib->isKeyPressed(ILib::RIGHT))
 			y++;
 		lib->drawSquare(x,y, 2);
 		lib->refreshWindow();
+		lib->updateKeys();
+		usleep(200);
 	}
-
 	lib->destroyWindow();
-
-
 	return ( 0 );
 }

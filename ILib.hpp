@@ -17,12 +17,27 @@
 class ILib
 {
 public:
+
+	enum e_key
+	{
+		ESC,
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+		F1,
+		F2,
+		F3,
+		SIZEOF
+	};
+
 	virtual bool		isCloseRequest( void ) = 0;
 	virtual bool		createWindow( int height, int width, std::string title) = 0;
 	virtual bool		refreshWindow( void ) = 0;
 	virtual bool		destroyWindow( void ) = 0;
 	virtual bool		clearWindow( void ) = 0;
-	virtual	int			getKeyPressed( void ) = 0;
+	virtual void		updateKeys( void ) = 0;
+	virtual	bool		isKeyPressed( e_key ) = 0;
 	virtual void		drawSquare(int posX, int posY, int size) = 0;
 };
 
