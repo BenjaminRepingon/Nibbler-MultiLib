@@ -22,14 +22,14 @@ public:
 	NcursesLib( void );
 	~NcursesLib( void );
 
-	bool				isCloseRequest( void );
+	bool				isCloseRequest( void ) const;
 	bool				createWindow( int height, int width, std::string title );
 	bool				refreshWindow( void );
 	bool				destroyWindow( void );
 	bool				clearWindow( void );
-	bool				isKeyPressed( e_key );
+	bool				isKeyPressed( e_key ) const;
 	void				updateKeys( void );
-	void				drawSquare(int posX, int posY, int size);
+	void				drawSquare(int posX, int posY, int size) const;
 
 private:
 	std::string 		_title;

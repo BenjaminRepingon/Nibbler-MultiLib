@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SnakePart.hpp                                      :+:      :+:    :+:   */
+/*   AComponent.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/05 15:54:55 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 12:12:09 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/05 15:32:03 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/06 10:52:04 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SNAKE_PART_HPP
-# define SNAKE_PART_HPP
-# include "../../core/AComponent.hpp"
-# include "../../utils/vec.hpp"
+#ifndef A_COMPONENT_HPP
+# define A_COMPONENT_HPP
+# include "../../ILib.hpp"
 
-class SnakePart : public AComponent
+class GameObject;
+
+class AComponent
 {
 public:
-	// SnakePart( void );
-	SnakePart( Vec2i const & pos, int size );
-	~SnakePart( void );
-	virtual int					update( ILib const * lib, double delta );
-	virtual int					render( ILib const * lib ) const;
+	virtual int					update( ILib const * lib, double delta ) = 0;
+	virtual int					render( ILib const * lib ) const = 0;
 
-private:
-	Vec2i						_pos;
-	int							_size;
+	/*
+	**	SETTER
+	*/
+	void						setParent( GameObject * parent );
+
+protected:
+	GameObject *				_parent;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:37:29 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/06 10:30:03 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool			CoreEngine::start( void )
 			break ;
 		}
 
-		this->_game->update( dt );
+		this->_game->update( this->_renderLib, dt );
 		this->_game->render( this->_renderLib );
 
 		endFrame = this->getTime();

@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/04 16:43:05 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/05 18:06:50 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME).dylib:	$(OBJ_LIB)
 
 %.o:		%.cpp $(HEAD)
 	@$(CC) $(CFLAGS) -fpic -c $< -o $@
-	@printf "\t%-54s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
+	@printf "\t%-48s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
 
 clean:
 	@printf "\033[31mRemove %s objects\033[0m\n" $(NAME)
