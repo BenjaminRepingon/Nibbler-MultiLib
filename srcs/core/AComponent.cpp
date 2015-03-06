@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IComponent.hpp                                     :+:      :+:    :+:   */
+/*   AComponent.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/05 15:32:03 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 15:41:43 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/06 10:44:01 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/06 10:48:42 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef I_COMPONENT_HPP
-# define I_COMPONENT_HPP
-# include "../../ILib.hpp"
+#include "AComponent.hpp"
 
-class IComponent
+
+void		AComponent::setParent( GameObject * parent )
 {
-public:
-	virtual int					update( double delta ) = 0;
-	virtual int					render( ILib const * lib ) const = 0;
-};
-
-#endif
+	this->_parent = parent;
+	return ;
+}

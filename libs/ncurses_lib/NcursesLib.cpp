@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 16:40:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:36:24 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/06 10:35:24 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ NcursesLib::~NcursesLib( void )
 	return ;
 }
 
-bool		NcursesLib::isCloseRequest( void )
+bool		NcursesLib::isCloseRequest( void ) const
 {
 	return ( getch() == 27 );
 }
@@ -62,17 +62,17 @@ bool		NcursesLib::clearWindow( void )
 	return ( true );
 }
 
-int			NcursesLib::getKeyPressed( void )
+int			NcursesLib::getKeyPressed( void ) const
 {
 	return getch( );
 }
 
-void NcursesLib::drawSquare(int posX, int posY, int size)
+void		NcursesLib::drawSquare(int posX, int posY, int size) const
 {
 	for (int x = 0; x < size; x++)
 	{
 			for (int y = 0; y < size; y++)
 				mvprintw(posX + x, posY + y, "*");
 	}
-	
+
 }

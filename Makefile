@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/03 16:05:59 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/05 16:57:36 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/06 11:23:21 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,17 @@ FILES			=	$(NAME).cpp						\
 					core/CoreEngine.cpp				\
 					core/GameObject.cpp				\
 					core/AGame.cpp					\
+					core/AComponent.cpp				\
 					\
 					game/Nibbler.cpp				\
 					game/components/SnakePart.cpp	\
 					game/objects/Snake.cpp			\
 
-
 SRCS			=	$(addprefix $(SRCS_DIR)/, $(FILES))
 
 OBJS			=	$(SRCS:.cpp=.o)
 
-HEADS			=	$(SRCS:.cpp=.hpp)			\
-					srcs/core/AGame.hpp
+HEADS			=	$(SRCS:.cpp=.hpp)
 
 all:			$(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 17:38:50 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 15:50:23 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/06 10:31:40 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ public:
 
 	virtual int					init( void ) = 0;
 	virtual int					addObject( GameObject * object );
-	virtual int					update( double delta );
+	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 
 protected:
-	std::vector<GameObject *>		_objects;
+	std::vector<GameObject *>	_objects;
 };
 
 #endif
