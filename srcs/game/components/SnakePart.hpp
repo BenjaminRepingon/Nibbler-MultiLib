@@ -24,9 +24,10 @@ public:
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 
+
 private:
-	Vec2i						_pos;
 	int							_size;
+	SnakePart *					_parent;
 };
 
 #endif

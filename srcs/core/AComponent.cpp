@@ -13,8 +13,19 @@
 #include "AComponent.hpp"
 
 
-void		AComponent::setParent( GameObject * parent )
+void		AComponent::setParent( AComponent * parent )
 {
 	this->_parent = parent;
 	return ;
+}
+
+void		AComponent::setPos( Vec2i pos )
+{
+	this->_pos = pos;
+	return ;
+}
+
+Vec2i		AComponent::getPos(void)
+{
+	return this->_pos;
 }

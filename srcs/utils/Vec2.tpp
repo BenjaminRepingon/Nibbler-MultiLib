@@ -54,28 +54,28 @@ public:
 		return ( *this );
 	};
 
-	inline Vec2 &	operator+( Vec2 const & rhs ) const
+	inline Vec2 &	operator+( Vec2 const & rhs )
 	{
 		this->_x += rhs.getX();
 		this->_y += rhs.getY();
 		return ( *this );
 	};
 
-	inline Vec2 &	operator-( Vec2 const & rhs ) const
+	inline Vec2 &	operator-( Vec2 const & rhs )
 	{
 		this->_x -= rhs.getX();
 		this->_y -= rhs.getY();
 		return ( *this );
 	};
 
-	inline Vec2 &	operator*( Vec2 const & rhs ) const
+	inline Vec2 &	operator*( Vec2 const & rhs )
 	{
 		this->_x *= rhs.getX();
 		this->_y *= rhs.getY();
 		return ( *this );
 	};
 
-	inline Vec2 &	operator/( Vec2 const & rhs ) const
+	inline Vec2 &	operator/( Vec2 const & rhs )
 	{
 		this->_x /= rhs.getX();
 		this->_y /= rhs.getY();

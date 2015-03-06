@@ -22,9 +22,13 @@ public:
 	Snake( int posX, int posY, size_t nbPart );
 	~Snake( void );
 
+	virtual int					update( ILib const * lib, double delta );
+
+
 private:
-	Vec2i				_pos;
-	size_t				_nbPart;
+	Vec2i						_pos;
+	Vec2i						_dir;
+	size_t						_nbPart;
 };
 
 #endif

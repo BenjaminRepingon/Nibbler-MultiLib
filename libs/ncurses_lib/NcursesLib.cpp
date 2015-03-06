@@ -94,7 +94,7 @@ void		NcursesLib::drawSquare(int posX, int posY, int size) const
 	for (int x = 0; x < size; x++)
 	{
 			for (int y = 0; y < size; y++)
-				mvprintw(posX + x, posY + y, "*");
+				mvprintw(posY + y, posX + x, "*");
 	}
 
 }

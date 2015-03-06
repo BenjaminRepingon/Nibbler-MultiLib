@@ -22,10 +22,31 @@ Snake::Snake( int posX, int posY, size_t nbPart ) :
 		#warning "TODO: set SnakePart correctly !"
 		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1 ) );
 	}
+	this->_dir = Vec2i(0, 1);
 	return ;
 }
 
 Snake::~Snake( void )
 {
 	return ;
+}
+
+int			Snake::update( ILib const * lib, double delta )
+{
+
+	if (lib->isKeyPressed(ILib::DOWN))
+		this->_dir = Vec2i(0, 1);
+	else if (lib->isKeyPressed(ILib::UP))
+		this->_dir = Vec2i(0, -1);
+	else if (lib->isKeyPressed(ILib::LEFT))
+		this->_dir = Vec2i(-1, 0);
+	else if (lib->isKeyPressed(ILib::RIGHT))
+		this->_dir = Vec2i(1, 0);
+
+	for ( size_t i = this->_components.size() - 1; i > 0; i-- )
+		this->_components[i]->update( lib, delta );
+	// printf("%d\n", this->_dir.get());
+	this->_components[0]->setPos(this->_components[0]->getPos() + this->_dir);
+
+	return ( true );
 }

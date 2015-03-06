@@ -13,7 +13,7 @@
 #ifndef A_COMPONENT_HPP
 # define A_COMPONENT_HPP
 # include "../../ILib.hpp"
-
+# include "../utils/vec.hpp"
 class GameObject;
 
 class AComponent
@@ -25,10 +25,13 @@ public:
 	/*
 	**	SETTER
 	*/
-	void						setParent( GameObject * parent );
+	void						setParent( AComponent * parent );
+	void						setPos(Vec2i pos);
+	Vec2i						getPos(void);
 
 protected:
-	GameObject *				_parent;
+	Vec2i 			_pos;
+	AComponent * 	_parent;
 };
 
 #endif

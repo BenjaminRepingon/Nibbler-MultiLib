@@ -25,7 +25,7 @@ public:
 	virtual int					render( ILib const * lib ) const;
 
 	int							addComponent( AComponent * component );
-private:
+protected:
 	std::vector<AComponent *>		_components;
 };
 
