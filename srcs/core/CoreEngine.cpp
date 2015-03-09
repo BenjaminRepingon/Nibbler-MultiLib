@@ -76,7 +76,7 @@ bool			CoreEngine::start( void )
 	{
 		startFrame = this->getTime();
 		this->_renderLib->updateKeys();
-		this->_renderLib->clearWindow();
+		
 		if ( this->_renderLib->isCloseRequest() )
 		{
 			this->stop();
@@ -88,7 +88,8 @@ bool			CoreEngine::start( void )
 
 		endFrame = this->getTime();
 		dt = (endFrame - startFrame);
-		usleep( 20000 );
+		// this->_renderLib->clearWindow();
+		usleep( 100000 );
 		// usleep( (SECOND / this->_fps) - (dt * SECOND) );
 #if DEBUG
 		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;

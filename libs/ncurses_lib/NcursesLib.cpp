@@ -24,7 +24,7 @@ NcursesLib::~NcursesLib( void )
 
 bool		NcursesLib::isCloseRequest( void ) const
 {
-	return ( getch() == 27 );
+	return ( this->_keys[ESC] );
 }
 
 bool		NcursesLib::createWindow( int height, int width, std::string title)
