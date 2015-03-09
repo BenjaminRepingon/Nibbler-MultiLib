@@ -34,6 +34,9 @@ FILES			=	$(NAME).cpp						\
 					game/Nibbler.cpp				\
 					game/components/SnakePart.cpp	\
 					game/objects/Snake.cpp			\
+					game/components/FoodElement.cpp	\
+					game/objects/Food.cpp			\
+
 
 SRCS			=	$(addprefix $(SRCS_DIR)/, $(FILES))
 

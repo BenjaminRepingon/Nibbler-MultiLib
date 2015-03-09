@@ -29,6 +29,7 @@ private:
 	Vec2i						_pos;
 	Vec2i						_dir;
 	size_t						_nbPart;
+
 };
 
 #endif

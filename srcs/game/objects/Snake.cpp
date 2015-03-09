@@ -48,6 +48,6 @@ int			Snake::update( ILib const * lib, double delta )
 		this->_components[i]->update( lib, delta );
 	// printf("%d\n", this->_dir.get());
 	this->_components[0]->setPos(this->_components[0]->getPos() + this->_dir);
-
 	return ( true );
 }
+

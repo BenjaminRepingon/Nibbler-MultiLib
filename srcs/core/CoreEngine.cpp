@@ -88,7 +88,7 @@ bool			CoreEngine::start( void )
 
 		endFrame = this->getTime();
 		dt = (endFrame - startFrame);
-		usleep( 20000 );
+		usleep( 180000 );
 		// usleep( (SECOND / this->_fps) - (dt * SECOND) );
 #if DEBUG
 		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;

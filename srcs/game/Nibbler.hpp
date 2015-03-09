@@ -21,6 +21,10 @@ public:
 	virtual ~Nibbler( void );
 
 	virtual int				init( void );
+	virtual int					update( ILib const * lib, double delta );
+
+		void						checkFood(void);
+
 
 };
 
