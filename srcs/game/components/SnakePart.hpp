@@ -19,11 +19,11 @@ class SnakePart : public AComponent
 {
 public:
 	// SnakePart( void );
-	SnakePart( Vec2i const & pos, int size );
+	SnakePart( Vec2i const & pos, int size, SnakePart *parent );
 	~SnakePart( void );
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
-
+	void						setParent( SnakePart * parent );
 
 private:
 	int							_size;

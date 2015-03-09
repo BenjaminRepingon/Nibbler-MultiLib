@@ -17,10 +17,11 @@ Snake::Snake( int posX, int posY, size_t nbPart ) :
 	_pos( posX, posY ),
 	_nbPart( nbPart )
 {
-	for ( size_t i = 0; i < this->_nbPart; i++ )
+	addComponent( new SnakePart( Vec2i( this->_pos.getX(), this->_pos.getY() ), 1, NULL ) );
+	for ( size_t i = 1; i < this->_nbPart; i++ )
 	{
 		#warning "TODO: set SnakePart correctly !"
-		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1 ) );
+		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1, static_cast<SnakePart*>(getComponents()[i - 1] )) );
 	}
 	this->_dir = Vec2i(0, 1);
 	return ;

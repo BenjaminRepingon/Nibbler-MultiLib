@@ -13,8 +13,8 @@
 #include "SnakePart.hpp"
 
 #warning "TODO: copilian form for SnakePart"
-SnakePart::SnakePart( Vec2i const & pos, int size ) :	
-	_size( size )
+SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :	
+	_size( size ), _parent(parent)
 {
 	setPos( pos );
 	return ;
@@ -28,7 +28,10 @@ SnakePart::~SnakePart( void )
 int			SnakePart::update( ILib const * lib, double delta )
 {
 	if (this->_parent != NULL)
+	{
 		this->_pos = this->_parent->getPos();
+		printf("blaa");
+	}
 	(void)lib;
 	(void)delta;
 	return ( true );
@@ -38,4 +41,10 @@ int			SnakePart::render( ILib const * lib ) const
 {
 	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), this->_size );
 	return ( true );
+}
+
+void		SnakePart::setParent( SnakePart * parent )
+{
+	this->_parent = parent;
+	return ;
 }

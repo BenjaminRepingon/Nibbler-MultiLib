@@ -25,13 +25,13 @@ public:
 	/*
 	**	SETTER
 	*/
-	void						setParent( AComponent * parent );
+
 	void						setPos(Vec2i pos);
 	Vec2i						getPos(void);
 
 protected:
 	Vec2i 			_pos;
-	AComponent * 	_parent;
+
 };
 
 #endif

@@ -42,3 +42,8 @@ int			GameObject::addComponent( AComponent * component )
 	this->_components.push_back( component );
 	return ( true );
 }
+
+std::vector<AComponent *>	GameObject::getComponents( void )
+{
+	return this->_components;
+}
