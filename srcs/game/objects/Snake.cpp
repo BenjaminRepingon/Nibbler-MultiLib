@@ -37,13 +37,13 @@ Snake::~Snake( void )
 int			Snake::update( ILib const * lib, double delta )
 {
 	float speed = this->_speed * delta;
-	if (lib->isKeyPressed(ILib::DOWN))
+	if (lib->isKeyPressed(ILib::DOWN) && this->_dir != Vec2i(0, -1))
 		this->_dir = Vec2i(0, 1);
-	else if (lib->isKeyPressed(ILib::UP))
+	else if (lib->isKeyPressed(ILib::UP) && this->_dir != Vec2i(0, 1))
 		this->_dir = Vec2i(0, -1);
-	else if (lib->isKeyPressed(ILib::LEFT))
+	else if (lib->isKeyPressed(ILib::LEFT) && this->_dir != Vec2i(1, 0))
 		this->_dir = Vec2i(-1, 0);
-	else if (lib->isKeyPressed(ILib::RIGHT))
+	else if (lib->isKeyPressed(ILib::RIGHT) && this->_dir != Vec2i(-1, 0))
 		this->_dir = Vec2i(1, 0);
 
 	for ( size_t i = this->_components.size() - 1; i > 0; i-- )
@@ -100,7 +100,12 @@ bool		Snake::checkNewPosition( int j, std::vector<AComponent *> foodElements )
 {
 	for (int i = 0;  i < (int)foodElements.size() ; i++)
 	{
-		if ( _food->getComponents()[i]->getPos() == this->getComponents()[i]->getPos() && j != i)
+		if ( _food->getComponents()[j]->getPos() == this->getComponents()[i]->getPos() && j != i)
+			return true;
+	}
+	for (int l = 0;  l < (int)this->_components.size() - 1 ; l++)
+	{
+		if ( this->_components[l]->getPos() == _food->getComponents()[j]->getPos() )
 			return true;
 	}
 	return false;

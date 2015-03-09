@@ -59,6 +59,11 @@ public:
 		return ( this->_x == rhs.getX() && this->_y == rhs.getY() );
 	};
 
+	inline bool		operator!=( Vec2 const & rhs )
+	{
+		return ( this->_x != rhs.getX() && this->_y != rhs.getY() );
+	};
+
 	inline Vec2 &	operator+( Vec2 const & rhs )
 	{
 		this->_x += rhs.getX();
