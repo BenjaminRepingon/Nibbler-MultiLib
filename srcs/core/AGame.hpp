@@ -14,9 +14,10 @@
 # define A_GAME_HPP
 # include <vector>
 # include <iostream>
-# include "GameObject.hpp"
+
 # include "../../ILib.hpp"
 
+class GameObject;
 class AGame
 {
 public:
@@ -26,8 +27,11 @@ public:
 	virtual int					addObject( GameObject * object );
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
+	virtual int					isRunnig( void );
+	virtual int					setRunnig( int state );
 
 protected:
+	int							_isRunning;
 	std::vector<GameObject *>	_objects;
 };
 

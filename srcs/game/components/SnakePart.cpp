@@ -28,10 +28,7 @@ SnakePart::~SnakePart( void )
 int			SnakePart::update( ILib const * lib, double delta )
 {
 	if (this->_parent != NULL)
-	{
 		this->_pos = this->_parent->getPos();
-		printf("blaa");
-	}
 	(void)lib;
 	(void)delta;
 	return ( true );

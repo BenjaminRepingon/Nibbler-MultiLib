@@ -9,7 +9,7 @@ Food::Food( int nbr ) :
 	for ( size_t i = 0; i < this->_nbr; i++ )
 	{
 		#warning "TODO: set limit for FoodElement correctly !"
-		addComponent( new FoodElement( Vec2i( rand() % 100 , rand() % 100 ) ) );
+		addComponent( new FoodElement( Vec2i( rand() % 25 , rand() % 25 ) ) );
 	}
 	return ;
 }

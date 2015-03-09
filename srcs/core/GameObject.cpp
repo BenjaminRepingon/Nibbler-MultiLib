@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "GameObject.hpp"
+#include "AGame.hpp"
 
 #warning "TODO: copilian form for GameObject"
 GameObject::GameObject( void )
@@ -46,4 +47,14 @@ int			GameObject::addComponent( AComponent * component )
 std::vector<AComponent *>	GameObject::getComponents( void )
 {
 	return this->_components;
+}
+
+void						GameObject::setGame(AGame * game)
+{
+	_game = game;
+}
+
+AGame*						GameObject::getGame( void ) const
+{
+	return ( this->_game );
 }

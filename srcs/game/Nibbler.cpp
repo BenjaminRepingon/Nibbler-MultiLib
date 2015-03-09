@@ -28,25 +28,14 @@ Nibbler::~Nibbler( void )
 int				Nibbler::init( void )
 {
 	Snake *		snake;
-	static int t = 1;
+	Food * 		food;
 
-	srand(t++);
-
-	snake = new Snake( 10, 10, 5 );
+	food = 	new Food(5);
+	snake = new Snake( 10, 10, 5, food );
+	addObject( food );
 	addObject( snake );
-	addObject( new Food(15));
+	_isRunning = true;
+
 	return ( true );
 }
 
-int			Nibbler::update( ILib const * lib, double delta )
-{
-	for ( size_t i = 0; i < this->_objects.size(); i++ )
-		this->_objects[i]->update( lib, delta );
-	return ( true );
-}
-
-void		Nibbler::checkFood(void)
-{
-	
-	return ;
-}

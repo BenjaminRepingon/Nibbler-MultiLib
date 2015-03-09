@@ -14,6 +14,7 @@
 # define GAME_OBJECT_HPP
 # include <vector>
 # include "AComponent.hpp"
+# include "AGame.hpp"
 
 class GameObject
 {
@@ -26,8 +27,11 @@ public:
 
 	int							addComponent( AComponent * component );
 	std::vector<AComponent *>	getComponents( void );
+	void						setGame(AGame * game);
+	AGame*						getGame( void ) const;
 
 protected:
+	AGame*							_game;
 	std::vector<AComponent *>		_components;
 };
 

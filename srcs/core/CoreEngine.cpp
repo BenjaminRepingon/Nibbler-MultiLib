@@ -72,12 +72,12 @@ bool			CoreEngine::start( void )
 	}
 	this->_isRunning = true;
 	this->_game->init();
-	while ( this->_isRunning )
+	while ( this->_isRunning && this->_game->isRunnig())
 	{
 		startFrame = this->getTime();
 		this->_renderLib->updateKeys();
 		this->_renderLib->clearWindow();
-		if ( this->_renderLib->isCloseRequest() )
+		if ( this->_renderLib->isCloseRequest())
 		{
 			this->stop();
 			break ;
@@ -88,12 +88,13 @@ bool			CoreEngine::start( void )
 
 		endFrame = this->getTime();
 		dt = (endFrame - startFrame);
-		usleep( 180000 );
+		usleep( 200000 );
 		// usleep( (SECOND / this->_fps) - (dt * SECOND) );
 #if DEBUG
 		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
 #endif
 	}
+	this->stop();
 	return ( true );
 }
 

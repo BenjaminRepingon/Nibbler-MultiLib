@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "GameObject.hpp"
 #include "AGame.hpp"
 
 int			AGame::addObject( GameObject * object )
 {
 	this->_objects.push_back( object );
+	object->setGame(this);
 	return ( true );
 }
 
@@ -29,4 +31,12 @@ int			AGame::render( ILib const * lib ) const
 	for ( size_t i = 0; i < this->_objects.size(); i++ )
 		this->_objects[i]->render( lib );
 	return ( true );
+}
+int			AGame::isRunnig( void )
+{
+	return ( this->_isRunning );
+}
+int			AGame::setRunnig( int state )
+{
+	this->_isRunning = state;
 }

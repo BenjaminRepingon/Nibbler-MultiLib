@@ -54,6 +54,11 @@ public:
 		return ( *this );
 	};
 
+	inline bool		operator==( Vec2 const & rhs )
+	{
+		return ( this->_x == rhs.getX() && this->_y == rhs.getY() );
+	};
+
 	inline Vec2 &	operator+( Vec2 const & rhs )
 	{
 		this->_x += rhs.getX();
@@ -75,12 +80,25 @@ public:
 		return ( *this );
 	};
 
+	inline Vec2 &	operator*( T const & value )
+	{
+		this->_x *= value;
+		this->_y *= value;
+		return ( *this );
+	};
+
 	inline Vec2 &	operator/( Vec2 const & rhs )
 	{
 		this->_x /= rhs.getX();
 		this->_y /= rhs.getY();
 		return ( *this );
 	};
+
+	// std::ostream &	operator<<(std::ostream & o, Vec2 const & i)
+	// {
+	// 	o << "x:" << i.getX() << ", y: " << i.getY() << std::endl;
+	// 	return o;
+	// }
 
 
 	/*
