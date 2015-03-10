@@ -2,10 +2,23 @@
 #include "Wall.hpp"
 
 #warning "TODO: copilian form for Wall"
-Wall::Wall( Vec2i const & a, Vec2i const & b )
+Wall::Wall( float x1, float y1, float x2, float y2 )
 {
-	setPos( a );
-	setPos2( b );
+	static int t = 0;
+
+	srand(t++);
+	if (t % 2)
+	{
+		int save = (int)(rand()%(int)(x2-x1 + 1) + x1);
+		setPos( Vec2i( save, (int)(rand()%(int)(y2-y1 + 1) + y1) ) );
+		setPos2( Vec2i( save, (int)(rand()%(int)(y2-y1 + 1) + y1) ) );
+	}
+	else
+	{
+		int save = (int)(rand()%(int)(y2-y1 + 1) + y1);
+		setPos( Vec2i( (int)(rand()%(int)(x2-x1 + 1) + x1), save ) );
+		setPos2( Vec2i( (int)(rand()%(int)(x2-x1 + 1) + x1), save ) );
+	}
 	return ;
 }
 
@@ -16,9 +29,6 @@ Wall::~Wall( void )
 
 int			Wall::update( ILib const * lib, double delta )
 {
-			printf("PDATE DIS SHIT");
-
-
 	(void)lib;
 	(void)delta;
 	return ( true );
@@ -26,8 +36,6 @@ int			Wall::update( ILib const * lib, double delta )
 
 int			Wall::render( ILib const * lib ) const
 {
-		printf("DRAW DIS SHIT");
-
 	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY() );
 	return ( true );
 }

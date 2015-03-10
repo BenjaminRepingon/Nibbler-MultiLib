@@ -1,15 +1,14 @@
-#ifndef WALL_HPP
-# define WALL_HPP
+#ifndef LIMITSIDE_HPP
+# define LIMITSIDE_HPP
 # include "../../core/AComponent.hpp"
 # include "../../utils/vec.hpp"
-# include <stdlib.h>
 
-class Wall : public AComponent
+class LimitSide : public AComponent
 {
 public:
-	// Wall( void );
-	Wall( float x1, float y1, float x2, float y2 );
-	~Wall( void );
+	// LimitSide( void );
+	LimitSide( Vec2i const & a, Vec2i const & b);
+	~LimitSide( void );
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 
