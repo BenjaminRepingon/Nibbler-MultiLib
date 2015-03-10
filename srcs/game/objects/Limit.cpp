@@ -1,4 +1,5 @@
 #include "Limit.hpp"
+#include <cstdlib>
 
 #warning "TODO: copilian form for Limit"
 Limit::Limit( float width, float height ) :
