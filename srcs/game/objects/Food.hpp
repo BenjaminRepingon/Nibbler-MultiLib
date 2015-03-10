@@ -2,6 +2,7 @@
 # define FOOD_HPP
 # include "../../core/GameObject.hpp"
 # include "../components/FoodElement.hpp"
+# include <cstdlib> 
 
 class Food : public GameObject
 {

@@ -15,6 +15,7 @@
 # include "../../core/GameObject.hpp"
 # include "../components/SnakePart.hpp"
 # include "Food.hpp"
+# include <cstdlib> 
 
 class Snake : public GameObject
 {
