@@ -56,7 +56,7 @@ int		main(int argc, char const *argv[])
 	lib = f();
 	core = new CoreEngine( 60, lib );
 
-	nibbler = new Nibbler();
+	nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]) );
 
 	core->setGame( nibbler );
 	core->start();

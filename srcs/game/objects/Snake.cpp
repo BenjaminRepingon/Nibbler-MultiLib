@@ -57,6 +57,7 @@ int			Snake::update( ILib const * lib, double delta )
 
 int			Snake::checkCollision( void )
 {
+	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
 	std::vector<AComponent *> foodElements;
 	foodElements = _food->getComponents();
 	for (int i = 0;  i < (int)foodElements.size() ; i++)
@@ -71,7 +72,7 @@ int			Snake::checkCollision( void )
 	{
 		if ( this->_components[0]->getPos() == this->_components[k]->getPos())
 			this->getGame()->setRunnig(false);
-		if ( 25 <= this->_components[k]->getPos().getX() || 25 <= this->_components[k]->getPos().getY() || 0 >= this->_components[k]->getPos().getX() || 0 >= this->_components[k]->getPos().getY())
+		if ( game->getWidth() <= this->_components[k]->getPos().getX() || game->getHeight() <= this->_components[k]->getPos().getY() || 0 >= this->_components[k]->getPos().getX() || 0 >= this->_components[k]->getPos().getY())
 			this->getGame()->setRunnig(false);
 	}
 	return false;
@@ -87,9 +88,10 @@ void		Snake::grow( void )
 void		Snake::popFood( int i, std::vector<AComponent *> foodElements )
 {
 	static int r = 1;
+	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+	srand(r++);	
 
-	srand(r++);
-	_food->getComponents()[i]->setPos(Vec2i( rand() % 25 , rand() % 25 ) );
+	_food->getComponents()[i]->setPos(Vec2i( rand() % game->getHeight() , rand() % game->getWidth() ) );
 	if (checkNewPosition(i, foodElements))
 		popFood(i, foodElements);
 	return ;

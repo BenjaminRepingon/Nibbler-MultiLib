@@ -14,6 +14,7 @@
 # define SNAKE_HPP
 # include "../../core/GameObject.hpp"
 # include "../components/SnakePart.hpp"
+# include "../Nibbler.hpp"
 # include "Food.hpp"
 # include <cstdlib> 
 

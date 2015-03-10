@@ -17,7 +17,8 @@
 #include "objects/Labyrinthe.hpp"
 
 #warning "TODO: copilian form for Nibbler"
-Nibbler::Nibbler( void )
+Nibbler::Nibbler( int sizex, int sizey ):
+_width( sizex ), _height( sizey )
 {
 	return ;
 }
@@ -34,8 +35,8 @@ int				Nibbler::init( void )
 	Limit *			limit;
 	Labyrinthe *	labyrinthe;
 
-	limit = new Limit( 25, 25 );
-	labyrinthe = new Labyrinthe( 25, 25, 0 );
+	limit = new Limit( _width, _height );
+	labyrinthe = new Labyrinthe( _width, _height, 0 );
 	food = 	new Food(5);
 	snake = new Snake( 10, 10, 5, food );
 	addObject( limit );
@@ -47,3 +48,12 @@ int				Nibbler::init( void )
 	return ( true );
 }
 
+int				Nibbler::getWidth( void )
+{
+	return this->_width;
+}
+
+int				Nibbler::getHeight( void )
+{
+	return this->_height;
+}

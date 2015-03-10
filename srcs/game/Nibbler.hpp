@@ -17,10 +17,15 @@
 class Nibbler : public AGame
 {
 public:
-	Nibbler( void );
+	Nibbler( int, int );
 	virtual ~Nibbler( void );
 
 	virtual int				init( void );
+	int						getWidth( void );
+	int						getHeight( void );
+private:
+	int		_width;
+	int		_height;
 };
 
 #endif
