@@ -98,3 +98,35 @@ void		NcursesLib::drawSquare(int posX, int posY, int size) const
 	}
 
 }
+
+void		NcursesLib::drawLine( float x1, float y1, float x2, float y2 ) const
+{
+	float tmp;
+	if (x2 < x1)
+	{
+		tmp = x2;
+		x2 = x1;
+		x1 = tmp;
+	}
+	if (y2 < y1)
+	{
+		tmp = y2;
+		y2 = y1;
+		y1 = tmp;
+	}
+	if (y1 == y2)
+	{
+		for (int x = x1; x <= x2; x++)
+		{
+			mvprintw(y1, x, "-");
+		}
+	}
+	else
+	{
+		for (int y = y1; y <= y2; y++)
+		{
+			mvprintw(y, x1, "|");
+		}
+	}	
+
+}

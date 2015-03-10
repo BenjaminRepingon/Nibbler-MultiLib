@@ -13,6 +13,7 @@
 #ifndef I_LIB_HPP
 # define I_LIB_HPP
 # include <iostream>
+# include "srcs/utils/vec.hpp"
 
 class ILib
 {
@@ -39,6 +40,7 @@ public:
 	virtual void		updateKeys( void ) = 0;
 	virtual	bool		isKeyPressed( e_key ) const = 0;
 	virtual void		drawSquare( int posX, int posY, int size ) const = 0;
+	virtual void		drawLine( float x1, float y1, float x2, float y2 ) const = 0;
 };
 
 #endif

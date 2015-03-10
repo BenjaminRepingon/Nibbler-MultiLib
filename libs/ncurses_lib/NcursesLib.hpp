@@ -15,6 +15,7 @@
 # include <ncurses.h>
 # include <vector>
 # include "../../ILib.hpp"
+# include "../../srcs/utils/vec.hpp"
 
 class NcursesLib : public ILib
 {
@@ -30,6 +31,7 @@ public:
 	bool				isKeyPressed( e_key ) const;
 	void				updateKeys( void );
 	void				drawSquare(int posX, int posY, int size) const;
+	void				drawLine( float x1, float y1, float x2, float y2 ) const;
 
 private:
 	std::string 		_title;

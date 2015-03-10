@@ -36,6 +36,8 @@ FILES			=	$(NAME).cpp						\
 					game/objects/Snake.cpp			\
 					game/components/FoodElement.cpp	\
 					game/objects/Food.cpp			\
+					game/components/Wall.cpp	\
+					game/objects/Limit.cpp			\
 
 
 SRCS			=	$(addprefix $(SRCS_DIR)/, $(FILES))

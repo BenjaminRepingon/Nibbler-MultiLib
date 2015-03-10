@@ -34,6 +34,10 @@ int		main( void )
 
 	while(!lib->isKeyPressed(ILib::ESC))
 	{
+		lib->drawLine(10, 0, 10, 20);
+		lib->drawLine(10, 0, 10, 20);
+		lib->drawLine(10, 0, 10, 20);
+		lib->drawLine(10, 0, 10, 20);
 		lib->clearWindow();
 		if (lib->isKeyPressed(ILib::DOWN))
 			x++;

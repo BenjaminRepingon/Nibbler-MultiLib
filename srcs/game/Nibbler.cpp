@@ -13,6 +13,7 @@
 #include "Nibbler.hpp"
 #include "objects/Snake.hpp"
 #include "objects/Food.hpp"
+#include "objects/Limit.hpp"
 
 #warning "TODO: copilian form for Nibbler"
 Nibbler::Nibbler( void )
@@ -29,11 +30,14 @@ int				Nibbler::init( void )
 {
 	Snake *		snake;
 	Food * 		food;
+	Limit *		limit;
 
 	food = 	new Food(5);
 	snake = new Snake( 10, 10, 5, food );
+	limit = new Limit( 0 );
 	addObject( food );
 	addObject( snake );
+	addObject( limit );
 	_isRunning = true;
 
 	return ( true );

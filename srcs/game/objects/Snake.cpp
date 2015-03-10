@@ -69,11 +69,10 @@ int			Snake::checkCollision( void )
 	}
 	for (int k = 1;  k < (int)this->_components.size() ; k++)
 	{
-		if ( this->_components[0]->getPos() == this->_components[k]->getPos() )
-		{
+		if ( this->_components[0]->getPos() == this->_components[k]->getPos())
 			this->getGame()->setRunnig(false);
-			printf("KABOOM");
-		}
+		if ( 25 <= this->_components[k]->getPos().getX() || 25 <= this->_components[k]->getPos().getY() || 0 >= this->_components[k]->getPos().getX() || 0 >= this->_components[k]->getPos().getY())
+			this->getGame()->setRunnig(false);
 	}
 	return false;
 }
