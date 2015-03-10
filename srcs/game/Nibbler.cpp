@@ -14,7 +14,6 @@
 #include "objects/Snake.hpp"
 #include "objects/Food.hpp"
 #include "objects/Limit.hpp"
-#include "objects/Labyrinthe.hpp"
 
 #warning "TODO: copilian form for Nibbler"
 Nibbler::Nibbler( int sizex, int sizey ):
@@ -36,9 +35,10 @@ int				Nibbler::init( void )
 	Labyrinthe *	labyrinthe;
 
 	limit = new Limit( _width, _height );
-	labyrinthe = new Labyrinthe( _width, _height, 0 );
-	food = 	new Food(5);
-	snake = new Snake( 10, 10, 5, food );
+	labyrinthe = new Labyrinthe( _width, _height, 5 );
+	#warning "TODO: faire food sans width et height !"
+	food = 	new Food(5, _width, _height);
+	snake = new Snake( 10, 10, 5, food, labyrinthe );
 	addObject( limit );
 	addObject( labyrinthe );
 	addObject( food );

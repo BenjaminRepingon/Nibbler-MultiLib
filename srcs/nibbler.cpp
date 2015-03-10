@@ -43,6 +43,8 @@ int		main(int argc, char const *argv[])
 	ILib *			(*f)( void );
 	char *			err;
 
+
+	srand(time(NULL));
 	if (!checkParams(argc, argv))
 		return 0;
 

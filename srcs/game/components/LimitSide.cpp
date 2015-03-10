@@ -26,14 +26,3 @@ int			LimitSide::render( ILib const * lib ) const
 	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY() );
 	return ( true );
 }
-
-void		LimitSide::setPos2( Vec2i pos2 )
-{
-	this->_pos2 = pos2;
-	return ;
-}
-
-Vec2i		LimitSide::getPos2(void)
-{
-	return this->_pos2;
-}

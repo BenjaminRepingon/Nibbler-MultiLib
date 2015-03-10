@@ -16,13 +16,14 @@
 # include "../components/SnakePart.hpp"
 # include "../Nibbler.hpp"
 # include "Food.hpp"
+# include "Labyrinthe.hpp"
 # include <cstdlib> 
 
 class Snake : public GameObject
 {
 public:
 	// Snake( void );
-	Snake( int posX, int posY, size_t nbPart, Food *food );
+	Snake( int posX, int posY, size_t nbPart, Food *food, Labyrinthe *labyrinthe );
 	~Snake( void );
 
 	virtual int					update( ILib const * lib, double delta );
@@ -34,6 +35,7 @@ private:
 	Vec2i						_dir;
 	size_t						_nbPart;
 	Food						*_food;
+	Labyrinthe					*_labyrinthe;
 	float						_speed;
 
 	int							checkCollision( void );

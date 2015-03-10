@@ -28,9 +28,12 @@ public:
 
 	void						setPos(Vec2i pos);
 	Vec2i						getPos(void);
-
+	void						setPos2(Vec2i pos2);
+	Vec2i						getPos2(void);
+	
 protected:
 	Vec2i 			_pos;
+	Vec2i 			_pos2;
 
 };
 

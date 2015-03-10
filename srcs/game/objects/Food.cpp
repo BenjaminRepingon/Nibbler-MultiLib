@@ -1,15 +1,16 @@
 #include "Food.hpp"
 
 #warning "TODO: copilian form for Food"
-Food::Food( int nbr ) :
+Food::Food( int nbr , int width, int height ) :
 	_nbr( nbr )
 {
-	static int t = 1;
-	srand(t++);
+	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+
+	// printf("Width: %d", game->getWidth());
 	for ( size_t i = 0; i < this->_nbr; i++ )
 	{
 		#warning "TODO: set limit for FoodElement correctly !"
-		addComponent( new FoodElement( Vec2i( rand() % 25 , rand() % 25 ) ) );
+		addComponent( new FoodElement( Vec2i( rand() % width , rand() % height ) ) );
 	}
 	return ;
 }

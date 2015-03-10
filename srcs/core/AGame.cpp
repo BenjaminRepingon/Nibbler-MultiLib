@@ -15,8 +15,8 @@
 
 int			AGame::addObject( GameObject * object )
 {
-	this->_objects.push_back( object );
 	object->setGame(this);
+	this->_objects.push_back( object );
 	return ( true );
 }
 

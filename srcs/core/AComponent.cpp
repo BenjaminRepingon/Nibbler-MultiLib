@@ -23,3 +23,14 @@ Vec2i		AComponent::getPos(void)
 {
 	return this->_pos;
 }
+
+void		AComponent::setPos2( Vec2i pos2 )
+{
+	this->_pos2 = pos2;
+	return ;
+}
+
+Vec2i		AComponent::getPos2(void)
+{
+	return this->_pos2;
+}
