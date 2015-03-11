@@ -2,17 +2,17 @@
 # define FOOD_HPP
 # include "../../core/GameObject.hpp"
 # include "../components/FoodElement.hpp"
-# include "../Nibbler.hpp"
 # include <cstdlib> 
 
 class Food : public GameObject
 {
 public:
 	// Food( void );
-	Food( int nbr, int width, int height);
+	Food( int nbr );
 	~Food( void );
 
 	virtual int					update( ILib const * lib, double delta );
+	virtual void				init( void );
 
 
 private:

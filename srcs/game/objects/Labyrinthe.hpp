@@ -1,5 +1,5 @@
 #ifndef LABYRINTHE_HPP
-# define LABYRTINTHE_HPP
+# define LABYRINTHE_HPP
 # include "../../core/GameObject.hpp"
 # include "../components/Wall.hpp"
 
@@ -9,6 +9,7 @@ public:
 	// Labyrinthe( void );
 	Labyrinthe(  float width, float height, int nbr );
 	~Labyrinthe( void );
+	virtual void				init( void );
 
 private:
 	float						_width;

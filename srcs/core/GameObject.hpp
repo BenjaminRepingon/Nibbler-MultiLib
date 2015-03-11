@@ -29,6 +29,7 @@ public:
 	std::vector<AComponent *>	getComponents( void );
 	void						setGame(AGame * game);
 	AGame*						getGame( void ) const;
+	virtual void				init( void );
 
 protected:
 	AGame*							_game;

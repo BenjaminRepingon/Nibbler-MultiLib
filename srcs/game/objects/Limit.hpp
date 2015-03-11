@@ -9,6 +9,7 @@ public:
 	// Limit( void );
 	Limit( float width, float height );
 	~Limit( void );
+	virtual void				init( void );
 
 private:
 	float						_width;
