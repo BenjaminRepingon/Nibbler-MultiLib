@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:04:58 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:33:06 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/11 19:00:11 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int checkParams(int ac, char const *av[])
 	{
 		x = atoi(av[1]);
 		y = atoi(av[2]);
-		if (x <= 50 && y <= 50 && x > 5 && y > 5)
+		if (x <= 60 && y <= 60 && x > 5 && y > 5)
 		{
 			return 1;
 		}
 	}
-	printf("Game Size must be betwwen x/y 5 and x/y 50\n");
+	printf("Game Size must be betwwen x/y 5 and x/y 60\n");
 	return 0;
 }
 
@@ -49,6 +49,7 @@ int		main(int argc, char const *argv[])
 		return 0;
 
 	handle = dlopen( "./libs/ncurses_lib/libncurses.dylib", RTLD_NOW );
+	// handle = dlopen( "./libs/opengl_lib/libopengl.dylib", RTLD_NOW );
 	if ( (err = dlerror()) != NULL )
 	{
 		std::cerr << err << std::endl;

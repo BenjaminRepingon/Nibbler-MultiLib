@@ -23,6 +23,6 @@ int			FoodElement::update( ILib const * lib, double delta )
 
 int			FoodElement::render( ILib const * lib ) const
 {
-	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), 1 );
+	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), 1, 0x00FFFF );
 	return ( true );
 }

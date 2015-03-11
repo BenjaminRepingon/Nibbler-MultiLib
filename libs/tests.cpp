@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 14:22:15 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 17:24:22 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/11 15:23:42 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 int		main( void )
 {
+	bool			error;
 	ILib *			lib;
 	void *			handle;
 	ILib *			(*f)( void );
@@ -26,19 +27,22 @@ int		main( void )
 	f = ( ILib *(*)() ) dlsym( handle, "getInstance" );
 	lib = f();
 
-	assert( lib->isCloseRequest() == 0 );
+	assert( lib->createWindow(850, 550, "test") );
 
-	lib->createWindow(2, 20, "prout");
+	assert( lib->isCloseRequest() == 0 );
 	int ch = 0, x = 0, y = 0;
 	lib->updateKeys();
 
-	while(!lib->isKeyPressed(ILib::ESC))
+	while(!lib->isCloseRequest())
 	{
-		lib->drawLine(10, 0, 10, 20);
-		lib->drawLine(10, 0, 10, 20);
-		lib->drawLine(10, 0, 10, 20);
-		lib->drawLine(10, 0, 10, 20);
+		// lib->drawLine(10, 0, 10, 20);
+		// lib->drawLine(10, 0, 10, 20);
 		lib->clearWindow();
+		lib->updateKeys();
+		lib->drawLine(0, 0, 60, 0);
+		lib->drawLine(60, 0, 60, 60);
+		lib->drawLine(60, 60, 0, 60);
+		lib->drawLine(0, 60, 0, 0);
 		if (lib->isKeyPressed(ILib::DOWN))
 			x++;
 		else if (lib->isKeyPressed(ILib::UP))
@@ -48,9 +52,11 @@ int		main( void )
 		else if (lib->isKeyPressed(ILib::RIGHT))
 			y++;
 		lib->drawSquare(x,y, 2);
+		lib->drawSquare(0,0, 1);
+		// lib->drawSquare(30,30, 1);
+		// lib->drawSquare(-31,-31, 1);
 		lib->refreshWindow();
-		lib->updateKeys();
-		usleep(200);
+		usleep(50000);
 	}
 	lib->destroyWindow();
 	return ( 0 );

@@ -36,6 +36,6 @@ int			Wall::update( ILib const * lib, double delta )
 
 int			Wall::render( ILib const * lib ) const
 {
-	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY() );
+	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY(), 0xFFFF00 );
 	return ( true );
 }

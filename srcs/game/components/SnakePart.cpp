@@ -6,14 +6,14 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:53:47 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 12:13:56 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/11 18:34:15 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SnakePart.hpp"
 
 #warning "TODO: copilian form for SnakePart"
-SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :	
+SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :
 	_size( size ), _parent(parent)
 {
 	setPos( pos );
@@ -36,7 +36,7 @@ int			SnakePart::update( ILib const * lib, double delta )
 
 int			SnakePart::render( ILib const * lib ) const
 {
-	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), this->_size );
+	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), this->_size, 0xFF0000 );
 	return ( true );
 }
 

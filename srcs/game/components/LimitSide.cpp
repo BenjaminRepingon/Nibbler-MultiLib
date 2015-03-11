@@ -23,6 +23,6 @@ int			LimitSide::update( ILib const * lib, double delta )
 
 int			LimitSide::render( ILib const * lib ) const
 {
-	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY() );
+	lib->drawLine( this->_pos.getX(), this->_pos.getY(), this->_pos2.getX(), this->_pos2.getY(), 0x00FF00 );
 	return ( true );
 }
