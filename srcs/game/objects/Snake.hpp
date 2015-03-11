@@ -14,34 +14,33 @@
 # define SNAKE_HPP
 # include "../../core/GameObject.hpp"
 # include "../components/SnakePart.hpp"
-# include "../Nibbler.hpp"
-# include "Food.hpp"
-# include "Labyrinthe.hpp"
 # include <cstdlib> 
 
 class Snake : public GameObject
 {
 public:
 	// Snake( void );
-	Snake( int posX, int posY, size_t nbPart, Food *food, Labyrinthe *labyrinthe );
+	Snake( int posX, int posY, size_t nbPart );
 	~Snake( void );
 
 	virtual int					update( ILib const * lib, double delta );
-
+	virtual void				init( void );
+	void						grow( void );
 
 
 private:
 	Vec2i						_pos;
 	Vec2i						_dir;
 	size_t						_nbPart;
-	Food						*_food;
-	Labyrinthe					*_labyrinthe;
+	// Food						*_food;
+	// Labyrinthe					*_labyrinthe;
+
 	float						_speed;
 
-	int							checkCollision( void );
-	void			grow( void );
-	void			popFood( int i, std::vector<AComponent *> foodElements );
-	bool			checkNewPosition( int j, std::vector<AComponent *> foodElements );
+	// int							checkCollision( void );
+
+	// void			popFood( int i, std::vector<AComponent *> foodElements );
+	// bool			checkNewPosition( int j, std::vector<AComponent *> foodElements );
 
 
 };

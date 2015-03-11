@@ -58,3 +58,8 @@ AGame*						GameObject::getGame( void ) const
 {
 	return ( this->_game );
 }
+
+void						GameObject::init( void )
+{
+	
+}

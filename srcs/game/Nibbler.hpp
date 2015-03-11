@@ -13,6 +13,10 @@
 #ifndef NIBBLER_HPP
 # define NIBBLER_HPP
 # include "../core/AGame.hpp"
+# include "objects/Snake.hpp"
+# include "objects/Food.hpp"
+# include "objects/Limit.hpp"
+# include "objects/Labyrinthe.hpp"
 
 class Nibbler : public AGame
 {
@@ -23,9 +27,21 @@ public:
 	virtual int				init( void );
 	int						getWidth( void );
 	int						getHeight( void );
+	int						checkBasicCollision( AComponent* );
+	int						checkWallCollision( AComponent* );
+	int						checkFoodCollision( AComponent* );
+	int						checkFoodCollision( AComponent* , int j);
+	int						update( ILib const * lib, double delta );
+	void					popFood( int i, std::vector<AComponent *> foodElements );
+
 private:
-	int		_width;
-	int		_height;
+	int						_width;
+	int						_height;
+
+	Snake*					_snake;
+	Food*					_food;
+	Limit*					_limit;
+	Labyrinthe*				_labyrinthe;
 };
 
 #endif
