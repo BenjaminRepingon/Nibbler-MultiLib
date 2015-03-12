@@ -61,8 +61,10 @@ int				Nibbler::getHeight( void )
 int			Nibbler::update( ILib const * lib, double delta )
 {
 	AGame::update(lib, delta);
-	if (this->checkBasicCollision(_snake->getComponents()[0])
-		|| this->checkWallCollision(_snake->getComponents()[0]) )
+	if (!_snake->getInvincible() && (this->checkBasicCollision(_snake->getComponents()[0])
+		|| this->checkWallCollision(_snake->getComponents()[0]) ))
+		this->setRunnig(false);
+	if (_snake->getInvincible() && this->checkBasicCollision(_snake->getComponents()[0]))
 		this->setRunnig(false);
 	this->checkFoodCollision(_snake->getComponents()[0]);
 	return ( true );
@@ -73,7 +75,15 @@ int			Nibbler::checkFoodCollision( AComponent *element )
 	std::vector<AComponent *> foodElements = _food->getComponents();
 	for (int i = 0;  i < (int)foodElements.size() ; i++)
 	{
-		if ( foodElements[i]->getPos() == element->getPos() )
+		if ( foodElements[i]->getPos() == element->getPos() && i == ((int)foodElements.size() - 1))
+		{
+			_snake->setInvincible(true);
+			// foodElements[i]->setPos(Vec2i(-10, -10));
+			popFood(i, foodElements );
+			_snake->setColour(0xFFFFFF);
+			return true;
+		}
+		if ( foodElements[i]->getPos() == element->getPos())
 		{
 			_snake->grow();
 			popFood(i, foodElements );

@@ -24,10 +24,12 @@ public:
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 	void						setParent( SnakePart * parent );
+	void						setColour( int c );
 
 private:
 	int							_size;
 	SnakePart *					_parent;
+	int							_colour;
 };
 
 #endif

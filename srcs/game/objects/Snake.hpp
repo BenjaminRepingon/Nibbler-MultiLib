@@ -16,6 +16,9 @@
 # include "../components/SnakePart.hpp"
 # include <cstdlib> 
 
+# define SECOND		(1000000.0)
+
+
 class Snake : public GameObject
 {
 public:
@@ -26,12 +29,19 @@ public:
 	virtual int					update( ILib const * lib, double delta );
 	virtual void				init( void );
 	void						grow( void );
-
+	bool						getInvincible( void );
+	void						setInvincible( bool );
+	double						getTime( void );
+	void						setColour( int c );
 
 private:
 	Vec2i						_pos;
 	Vec2i						_dir;
 	size_t						_nbPart;
+	bool						_invincible;
+	double						_startFrame;
+	double						_endFrame;
+	double						_dt;
 	// Food						*_food;
 	// Labyrinthe					*_labyrinthe;
 

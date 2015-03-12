@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/03 16:05:59 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/12 11:24:12 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/06 11:23:21 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ FILES			=	$(NAME).cpp						\
 					game/components/SnakePart.cpp	\
 					game/objects/Snake.cpp			\
 					game/components/FoodElement.cpp	\
+					game/components/PotionElement.cpp	\
 					game/objects/Food.cpp			\
 					game/components/LimitSide.cpp	\
 					game/objects/Limit.cpp			\
@@ -70,14 +71,6 @@ clean:
 fclean:			clean
 	@printf "\033[31mRemove binary\033[0m\n"
 	@rm -rf $(NAME)
-
-lib:
-	@make -C ./libs/ncurses_lib/
-	@make -C ./libs/opengl_lib/
-
-re-libs:
-	@make re -C ./libs/ncurses_lib/
-	@make re -C ./libs/opengl_lib/
 
 re:				fclean all
 
