@@ -123,6 +123,31 @@ void		NcursesLib::drawSquare( int posX, int posY, int size, int color ) const
 	wattroff(this->_window, COLOR_PAIR(c));
 }
 
+void		NcursesLib::drawText( float x1, float y1, char* s, int points, int color ) const
+{
+	// int		r, g, b;
+	// int		c;
+	// std::map<int,int>::const_iterator it;
+
+	// if ( (it = NcursesLib::_colors.find( color ) ) == NcursesLib::_colors.end() )
+	// {
+	// 	c = NcursesLib::_colors.size() + 1;
+	// 	r = ( (color & 0xFF0000) >> 16 ) * 3.5;
+	// 	g = ( (color & 0x00FF00) >> 8 ) * 3.5;
+	// 	b = ( (color & 0x0000FF) ) * 3.5;
+	// 	init_color( c + 100, r, g, b );
+	// 	init_pair( c, c + 100, c + 100 );
+	// 	NcursesLib::_colors.insert( std::pair<int,int>( color, c ) );
+	// }
+	// else
+	// 	c = it->second;
+
+	// wattron(this->_window, COLOR_PAIR(c));
+	(void)color;
+	mvwprintw( this->_window, y1, (x1) * 2, "%s: %d", s, points);
+	// wattroff(this->_window, COLOR_PAIR(c));
+}
+
 void		NcursesLib::drawLine( float x1, float y1, float x2, float y2, int color ) const
 {
 	(void)color;

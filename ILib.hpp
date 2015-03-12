@@ -41,6 +41,7 @@ public:
 	virtual	bool		isKeyPressed( e_key ) const = 0;
 	virtual void		drawSquare( int posX, int posY, int size, int color ) const = 0;
 	virtual void		drawLine( float x1, float y1, float x2, float y2, int color ) const = 0;
+	virtual void		drawText( float x1, float y1, char* s, int points, int color ) const = 0;
 };
 
 #endif

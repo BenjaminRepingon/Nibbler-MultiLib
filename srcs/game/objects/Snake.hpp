@@ -47,6 +47,8 @@ private:
 
 	float						_speed;
 
+	int							_points;
+
 	// int							checkCollision( void );
 
 	// void			popFood( int i, std::vector<AComponent *> foodElements );

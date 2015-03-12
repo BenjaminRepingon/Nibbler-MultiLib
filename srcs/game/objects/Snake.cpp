@@ -12,13 +12,17 @@
 
 #include "Snake.hpp"
 #include "../Nibbler.hpp"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 #warning "TODO: copilian form for Snake"
 Snake::Snake( int posX, int posY, size_t nbPart) :
 	_pos( posX, posY ),
 	_nbPart( nbPart ),
 	_invincible( false ),
-	_speed( 1 )
+	_speed( 1 ),
+	_points( 0 )
 {
 	return ;
 }
@@ -43,6 +47,8 @@ int			Snake::update( ILib const * lib, double delta )
 	for ( size_t i = this->_components.size() - 1; i > 0; i-- )
 		this->_components[i]->update( lib, delta );
 	this->_components[0]->setPos(this->_components[0]->getPos() + this->_dir);
+	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
+	lib->drawText( game->getWidth()+2, 5, "Player1", _points , 0xFFFFFF );
 	return ( true );
 }
 
@@ -67,6 +73,7 @@ void		Snake::grow( void )
 	this->_nbPart++;
 	if (this->_invincible)
 		setColour(0xFFFFFF);
+	_points++;
 }
 
 bool						Snake::getInvincible( void )

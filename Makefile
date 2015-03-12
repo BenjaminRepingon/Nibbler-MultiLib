@@ -72,6 +72,14 @@ fclean:			clean
 	@printf "\033[31mRemove binary\033[0m\n"
 	@rm -rf $(NAME)
 
+lib:
+	@make -C ./libs/ncurses_lib/
+	@make -C ./libs/opengl_lib/
+
+re-libs:
+	@make re -C ./libs/ncurses_lib/
+	@make re -C ./libs/opengl_lib/
+
 re:				fclean all
 
 .PHONY: all, clean, fclean, re
