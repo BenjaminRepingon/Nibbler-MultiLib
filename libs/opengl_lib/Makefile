@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/11 14:49:49 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/12 14:19:58 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,18 @@ fclean:			clean
 re:			fclean all
 
 install:
-	@brew update
+	@if [ ! -d "~/.brew" ] ; \
+	then \
+		brew update; \
+	fi;
+	@if [ ! -d "~/Library/Caches" ] ; \
+	then \
+		mkdir ~/Library/Caches; \
+	fi;
+	@if [ ! -d "~/Library/Caches/Homebrew" ] ; \
+	then \
+		mkdir ~/Library/Caches/Homebrew; \
+	fi;
 	@~/.brew/bin/brew install homebrew/versions/glfw3
 
 .PHONY:		all re fclean clean
