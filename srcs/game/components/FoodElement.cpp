@@ -26,3 +26,4 @@ int			FoodElement::render( ILib const * lib ) const
 	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), 1, 0x00FFFF );
 	return ( true );
 }
+

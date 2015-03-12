@@ -11,6 +11,8 @@ public:
 	~Labyrinthe( void );
 	virtual void				init( void );
 
+	void			addWalls( int nbr );
+
 private:
 	float						_width;
 	float						_height;

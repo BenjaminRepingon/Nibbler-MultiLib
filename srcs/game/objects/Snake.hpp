@@ -33,7 +33,7 @@ public:
 	void						setInvincible( bool );
 	double						getTime( void );
 	void						setColour( int c );
-
+	int 						getPoints( void );
 private:
 	Vec2i						_pos;
 	Vec2i						_dir;

@@ -23,3 +23,16 @@ void	Labyrinthe::init( void )
 		}
 	}
 }
+
+void	Labyrinthe::addWalls( int nbr )
+{
+	this->_nbr += nbr;
+	for ( int i = 0; i < this->_nbr; i++ )
+	{
+		for ( int j = 0; j < this->_nbr; j++ )
+		{
+			#warning "TODO: set Labyrinthe for LabyrintheElement correctly !"
+			addComponent( new Wall( ((this->_width / this->_nbr) * i), ((this->_height / this->_nbr) * j), ((this->_width / this->_nbr) * i + 1), ((this->_height / this->_nbr) * j + 1) ) );			
+		}
+	}
+}

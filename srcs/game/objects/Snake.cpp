@@ -110,3 +110,7 @@ void						Snake::setColour( int c )
 	return ;
 }
 
+int 						Snake::getPoints( void )
+{
+	return this->_points;
+}

@@ -33,6 +33,7 @@ public:
 	int						checkFoodCollision( AComponent* , int j);
 	int						update( ILib const * lib, double delta );
 	void					popFood( int i, std::vector<AComponent *> foodElements );
+	void					checkLevel( void );
 
 private:
 	int						_width;
@@ -42,6 +43,8 @@ private:
 	Food*					_food;
 	Limit*					_limit;
 	Labyrinthe*				_labyrinthe;
+
+	int 					_level;
 };
 
 #endif

@@ -21,10 +21,10 @@ int			PotionElement::update( ILib const * lib, double delta )
 	if (this->_dt >= 5)
 	{
 		this->_startFrame = this->getTime();
-		if (getPos() != Vec2i(-1, -1))
+		if (getPos() != Vec2i(-10, -10))
 		{
 			this->_savePos = getPos();
-			setPos(Vec2i(-1, -1));
+			setPos(Vec2i(-10, -10));
 		}
 		else
 			setPos(this->_savePos);
@@ -37,7 +37,7 @@ int			PotionElement::update( ILib const * lib, double delta )
 
 int			PotionElement::render( ILib const * lib ) const
 {
-	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), 1, 0xFFFFFF );
+	lib->drawSquare( this->_pos.getX(), this->_pos.getY(), 1, 0xFF00FF );
 	return ( true );
 }
 

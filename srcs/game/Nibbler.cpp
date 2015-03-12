@@ -14,7 +14,7 @@
 
 #warning "TODO: copilian form for Nibbler"
 Nibbler::Nibbler( int sizex, int sizey ):
-_width( sizex ), _height( sizey )
+_width( sizex ), _height( sizey ), _level(0)
 {
 	return ;
 }
@@ -27,7 +27,7 @@ Nibbler::~Nibbler( void )
 int				Nibbler::init( void )
 {
 	_limit = new Limit( _width, _height );
-	_labyrinthe = new Labyrinthe( _width, _height, 5 );
+	_labyrinthe = new Labyrinthe( _width, _height, 0 );
 	_food = new Food(5);
 	_snake = new Snake( 10, 10, 5 );
 
@@ -67,7 +67,33 @@ int			Nibbler::update( ILib const * lib, double delta )
 	if (_snake->getInvincible() && this->checkBasicCollision(_snake->getComponents()[0]))
 		this->setRunnig(false);
 	this->checkFoodCollision(_snake->getComponents()[0]);
+	this->checkLevel();
 	return ( true );
+}
+
+void	Nibbler::checkLevel( void )
+{
+	if (this->_snake->getPoints() > 10 && this->_level == 0)
+	{
+		this->_level++;
+		this->_labyrinthe->addWalls(2);
+	}
+	if (this->_snake->getPoints() > 20 && this->_level == 1)
+	{
+		this->_level++;
+		this->_labyrinthe->addWalls(2);
+	}
+	if (this->_snake->getPoints() > 30 && this->_level == 2)
+	{
+		this->_level++;
+		this->_labyrinthe->addWalls(1);
+	}
+	if (this->_snake->getPoints() > 40 && this->_level == 3)
+	{
+		this->_level++;
+		this->_labyrinthe->addWalls(1);
+	}
+	return ;
 }
 
 int			Nibbler::checkFoodCollision( AComponent *element )
@@ -78,7 +104,6 @@ int			Nibbler::checkFoodCollision( AComponent *element )
 		if ( foodElements[i]->getPos() == element->getPos() && i == ((int)foodElements.size() - 1))
 		{
 			_snake->setInvincible(true);
-			// foodElements[i]->setPos(Vec2i(-10, -10));
 			popFood(i, foodElements );
 			_snake->setColour(0xFFFFFF);
 			return true;
