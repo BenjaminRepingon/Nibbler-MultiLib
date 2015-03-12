@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 16:40:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/11 19:14:02 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/12 12:15:49 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ bool		NcursesLib::destroyWindow( void )
 {
 	delwin( this->_window );
 	endwin( );
+	use_default_colors();
 	return ( true );
 }
 
 bool		NcursesLib::clearWindow( void )
 {
-	// wclear(this->_window); seems to be too slow
+	wclear(this->_window); //seems to be too slow
 	clear( );
 	return ( true );
 }
@@ -91,7 +92,7 @@ bool		NcursesLib::isKeyPressed( e_key key ) const
 {
 	return (this->_keys[key]);
 }
-#define COLOR 1
+
 void		NcursesLib::drawSquare( int posX, int posY, int size, int color ) const
 {
 	int		r, g, b;
@@ -104,23 +105,22 @@ void		NcursesLib::drawSquare( int posX, int posY, int size, int color ) const
 		r = ( (color & 0xFF0000) >> 16 ) * 3.5;
 		g = ( (color & 0x00FF00) >> 8 ) * 3.5;
 		b = ( (color & 0x0000FF) ) * 3.5;
-		// std::cout << r << std::endl;
-		init_color( c, r, g, b );
-		init_pair( c, c, c );
+		init_color( c + 100, r, g, b );
+		init_pair( c, c + 100, c + 100 );
 		NcursesLib::_colors.insert( std::pair<int,int>( color, c ) );
 	}
 	else
 		c = it->second;
 
-	attron(COLOR_PAIR(c));
+	wattron(this->_window, COLOR_PAIR(c));
 	for (int x = 0; x < size; x++)
 	{
 			for (int y = 0; y < size; y++)
 			{
-				mvprintw(posY + y, (posX + x) * 2, "  ");
+				mvwprintw( this->_window, posY + y, (posX + x) * 2, "  ");
 			}
 	}
-	attroff(COLOR_PAIR(c));
+	wattroff(this->_window, COLOR_PAIR(c));
 }
 
 void		NcursesLib::drawLine( float x1, float y1, float x2, float y2, int color ) const

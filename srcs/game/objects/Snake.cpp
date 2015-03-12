@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:54:03 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 12:14:51 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/12 12:31:49 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Snake::Snake( int posX, int posY, size_t nbPart) :
 	_pos( posX, posY ),
 	_nbPart( nbPart ),
-	_speed( 1.0 )
+	_speed( 1 )
 {
 	return ;
 }
@@ -48,7 +48,7 @@ int			Snake::update( ILib const * lib, double delta )
 
 void						Snake::init( void )
 {
-	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
 
 	addComponent( new SnakePart( Vec2i( this->_pos.getX(), this->_pos.getY() ), 1, NULL ) );
 	for ( size_t i = 1; i < this->_nbPart; i++ )
@@ -61,7 +61,7 @@ void						Snake::init( void )
 
 // int			Snake::checkCollision( void )
 // {
-// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
 // 	std::vector<AComponent *> foodElements;
 // 	foodElements = _food->getComponents();
 // 	std::vector<AComponent *> walls;
@@ -124,7 +124,7 @@ void		Snake::grow( void )
 
 // void		Snake::popFood( int i, std::vector<AComponent *> foodElements )
 // {
-// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
 
 // 	_food->getComponents()[i]->setPos(Vec2i( (rand() % (game->getWidth() - 1)+ 1) , (rand() % (game->getHeight() - 1) ) + 1 ));
 // 	if (checkNewPosition(i, foodElements))
@@ -134,7 +134,7 @@ void		Snake::grow( void )
 
 // bool		Snake::checkNewPosition( int j, std::vector<AComponent *> foodElements )
 // {
-// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() ); 
+// 	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
 // 	if ( game->getWidth() <= _food->getComponents()[j]->getPos().getX() || game->getHeight() <= _food->getComponents()[j]->getPos().getY() || 0 >= _food->getComponents()[j]->getPos().getX() || 0 >= _food->getComponents()[j]->getPos().getY())
 // 		return true;
 // 	for (int i = 0;  i < (int)foodElements.size() ; i++)

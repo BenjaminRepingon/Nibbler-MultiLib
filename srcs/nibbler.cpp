@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:04:58 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/11 19:00:11 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/12 12:35:45 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		main(int argc, char const *argv[])
 	}
 	f = ( ILib *(*)() ) dlsym( handle, "getInstance" );
 	lib = f();
-	core = new CoreEngine( 60, lib );
+	core = new CoreEngine( 8, lib );
 
 	nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]) );
 

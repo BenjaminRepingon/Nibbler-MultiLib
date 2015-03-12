@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/11 15:26:20 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/12 12:16:42 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ bool			CoreEngine::start( void )
 
 		endFrame = this->getTime();
 		dt = (endFrame - startFrame);
-		usleep( 200000 );
-		// usleep( (SECOND / this->_fps) - (dt * SECOND) );
+		// usleep( 200000 );
+		usleep( (SECOND / this->_fps) - (dt * SECOND) );
 #if DEBUG
 		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
 #endif
