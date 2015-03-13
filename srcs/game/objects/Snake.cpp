@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:54:03 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 14:58:38 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:39:40 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ Snake::Snake( int posX, int posY, size_t nbPart) :
 	_pos( posX, posY ),
 	_nbPart( nbPart ),
 	_invincible( false ),
-	_points( 0 )
+	_points( 0 ),
+	_setNewControls(0),
+	_basicColor( 0xff0000 ),
+	_powerColor( 0xFFFFFF )
 {
 	return ;
 }
@@ -45,13 +48,18 @@ Snake &	Snake::operator=( Snake const & rhs )
 
 int			Snake::update( ILib const * lib, double delta )
 {
-	if (lib->isKeyPressed(ILib::DOWN) && this->_dir != Vec2i(0, -1))
+	static ILib::e_key keys[][4] = {
+		{ILib::DOWN, ILib::UP, ILib::LEFT, ILib::RIGHT},
+		{ILib::S, ILib::W, ILib::A, ILib::D}
+	};
+
+	if (lib->isKeyPressed(keys[_setNewControls][0]) && this->_dir != Vec2i(0, -1))
 		this->_dir = Vec2i(0, 1);
-	else if (lib->isKeyPressed(ILib::UP) && this->_dir != Vec2i(0, 1))
+	else if (lib->isKeyPressed(keys[_setNewControls][1]) && this->_dir != Vec2i(0, 1))
 		this->_dir = Vec2i(0, -1);
-	else if (lib->isKeyPressed(ILib::LEFT) && this->_dir != Vec2i(1, 0))
+	else if (lib->isKeyPressed(keys[_setNewControls][2]) && this->_dir != Vec2i(1, 0))
 		this->_dir = Vec2i(-1, 0);
-	else if (lib->isKeyPressed(ILib::RIGHT) && this->_dir != Vec2i(-1, 0))
+	else if (lib->isKeyPressed(keys[_setNewControls][3]) && this->_dir != Vec2i(-1, 0))
 		this->_dir = Vec2i(1, 0);
 
 	for ( size_t i = this->_components.size() - 1; i > 0; i-- )
@@ -77,7 +85,7 @@ void		Snake::grow( void )
 	addComponent( new SnakePart( parent->getPos() , 1, static_cast<SnakePart*>(parent) ) );
 	this->_nbPart++;
 	if (this->_invincible)
-		setColour(0xFFFFFF);
+		setColour( _powerColor );
 	_points++;
 }
 
@@ -88,7 +96,7 @@ bool						Snake::getInvincible( void )
 	if (this->_dt >= 5)
 	{
 		this->_invincible = false;
-		setColour(0xff0000);
+		setColour( _basicColor );
 	}
 	return _invincible;
 }
@@ -108,6 +116,7 @@ double						Snake::getTime( void )
 	return ( tv.tv_sec + (double)tv.tv_usec / SECOND );
 }
 
+
 void						Snake::setColour( int c )
 {
 	for (int i = 0; i < (int)this->getComponents().size(); i++)
@@ -119,3 +128,36 @@ int 						Snake::getPoints( void )
 {
 	return this->_points;
 }
+
+void						Snake::setNewControls( int isNewControl )
+{
+	_setNewControls = isNewControl;
+}
+
+void						Snake::setBasicColor( int c )
+{
+	_basicColor = c;
+}
+int							Snake::getBasicColor( void )
+{
+	return _basicColor;
+}
+void						Snake::setPowerColor( int c )
+{
+	_powerColor = c;
+}
+int							Snake::getPowerColor( void )
+{
+	return _powerColor;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -33,7 +33,11 @@ void		OpenglLib::key_callback( GLFWwindow * window, int key, int scancode, int a
 		{DOWN, GLFW_KEY_DOWN},
 		{F1, GLFW_KEY_1},
 		{F2, GLFW_KEY_2},
-		{F3, GLFW_KEY_3}
+		{F3, GLFW_KEY_3},
+		{D, GLFW_KEY_D},
+		{A, GLFW_KEY_A},
+		{W, GLFW_KEY_W},
+		{S, GLFW_KEY_S}
 	};
 
 	if ( key == GLFW_KEY_ESCAPE && action == GLFW_PRESS )

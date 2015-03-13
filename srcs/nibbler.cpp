@@ -6,11 +6,10 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:04:58 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 14:47:26 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:37:33 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
 #include "core/CoreEngine.hpp"
 #include "game/Nibbler.hpp"
 
@@ -22,12 +21,12 @@ int checkParams(int ac, char const *av[])
 	{
 		x = atoi(av[1]);
 		y = atoi(av[2]);
-		if (x <= 60 && y <= 60 && x > 5 && y > 5)
+		if (x <= 60 && y <= 60 && x > 14 && y > 14)
 		{
 			return 1;
 		}
 	}
-	printf("Game Size must be betwwen x/y 5 and x/y 60\n");
+	printf("Game Size must be betwwen x/y 15 and x/y 60\n");
 	return 0;
 }
 

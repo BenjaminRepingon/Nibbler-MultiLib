@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:54:27 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 14:54:22 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:38:07 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ public:
 	double						getTime( void );
 	void						setColour( int c );
 	int 						getPoints( void );
+	void						setNewControls( int );
+	void						setBasicColor( int );
+	int							getBasicColor( void );
+	void						setPowerColor( int );
+	int							getPowerColor( void );
+
 private:
 	Vec2i						_pos;
 	Vec2i						_dir;
@@ -46,6 +52,9 @@ private:
 	double						_endFrame;
 	double						_dt;
 	int							_points;
+	int							_setNewControls;
+	int							_basicColor;
+	int							_powerColor;
 };
 
 #endif

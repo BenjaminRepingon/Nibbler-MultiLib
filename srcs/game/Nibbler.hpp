@@ -32,8 +32,8 @@ public:
 	int						getHeight( void );
 	int						checkBasicCollision( AComponent* );
 	int						checkWallCollision( AComponent* );
-	int						checkFoodCollision( AComponent* );
-	int						checkFoodCollision( AComponent* , int j);
+	int						checkFoodCollision( AComponent*, Snake* );
+	int						checkFoodCollision( AComponent*, int j);
 	int						update( ILib const * lib, double delta );
 	void					popFood( int i, std::vector<AComponent *> foodElements );
 	void					checkLevel( void );
@@ -43,6 +43,7 @@ private:
 	int						_height;
 
 	Snake*					_snake;
+	Snake*					_snake2;
 	Food*					_food;
 	Limit*					_limit;
 	Labyrinthe*				_labyrinthe;

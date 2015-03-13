@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:46:14 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 14:49:55 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:39:18 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int			AGame::isRunnig( void )
 int			AGame::setRunnig( int state )
 {
 	this->_isRunning = state;
-	return ( 1 );
+	return true;
 }

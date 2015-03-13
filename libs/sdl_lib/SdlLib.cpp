@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/04 16:17:22 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 13:58:55 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:41:44 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ void		SdlLib::updateKeys( void )
 		{DOWN, SDLK_DOWN},
 		{F1, SDLK_1},
 		{F2, SDLK_2},
-		{F3, SDLK_3}
+		{F3, SDLK_3},
+		{D, SDLK_d},
+		{A, SDLK_a},
+		{W, SDLK_w},
+		{S, SDLK_s}
 	};
 
 	for (int i = 0; i < SIZEOF; i++)
