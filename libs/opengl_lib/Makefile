@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/12 14:24:05 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/13 12:19:54 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,16 +23,18 @@ OBJ_LIB		=	$(SRC_LIB:.cpp=.o)
 
 HEAD		=	$(NAME).hpp
 
-LIBS		=	-I ~/.brew/Cellar/glfw3/3.1/include/
+INC			=	-I ~/.brew/include/
+
+LIB			=	-L ~/.brew/lib/ -lglfw3 -framework OpenGL
 
 all:		$(NAME).dylib
 
 $(NAME).dylib:	$(OBJ_LIB)
-	@g++ -shared -o $(NAME).dylib $(OBJ_LIB) -L ~/.brew/Cellar/glfw3/3.1/lib/ -lglfw3 -framework OpenGL
+	@g++ -shared -o $(NAME).dylib $(OBJ_LIB) $(LIB)
 	@printf "\033[33mCompilation of %-40s \033[34m[\033[32m✔\033[34m]\033[0m\n" $(NAME)
 
 %.o:		%.cpp $(HEAD)
-	@$(CC) $(CFLAGS) -fpic -c $< -o $@ $(LIBS)
+	@$(CC) $(CFLAGS) -fpic -c $< -o $@ $(INC)
 	@printf "\t%-48s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
 
 clean:

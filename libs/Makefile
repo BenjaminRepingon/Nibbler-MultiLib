@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 16:47:25 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/04 17:23:51 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/13 12:20:44 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,14 @@ CC				=	g++
 NAME			=	tests
 
 all:
-	@printf "\033[31musage: mlx_tests, ncurses_tests, opengl_tests\033[0n\n"
+	@printf "\033[31musage: sdl_tests, ncurses_tests, opengl_tests\033[0n\n"
 
-mlx_tests:
-	@(cd ./mlx_lib && $(MAKE) re)
-	@g++ -DLIB='"./mlx_lib/libmlx.dylib"' tests.cpp -o mlx$(NAME)
+sdl_tests:
+	@(cd ./sdl_lib && $(MAKE) re)
+	@g++ -DLIB='"./sdl_lib/libsdl.dylib"' tests.cpp -o sdl$(NAME)
 	@printf "\n\033[31m_______________________\033[32m \
 	MLX TESTS \033[31m_______________________\033[0m\n"
-	@./mlx$(NAME)
+	@./sdl$(NAME)
 
 ncurses_tests:
 	@(cd ./ncurses_lib && $(MAKE) re)
@@ -40,5 +40,5 @@ opengl_tests:
 	OPENGL TESTS \033[31m______________________\033[0m\n"
 	@./opengl$(NAME)
 
-all_tests: mlx_tests ncurses_tests opengl_tests
+all_tests: sdl_tests ncurses_tests opengl_tests
 

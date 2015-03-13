@@ -6,7 +6,7 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/03 16:05:59 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/06 11:23:21 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/13 14:03:16 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,6 @@ $(OBJS):		$(HEADS)
 clean:
 	@printf "\033[31mRemove %s objects\033[0m\n" $(NAME)
 	@rm -rf $(OBJS)
-	@(cd ./libs/mlx_lib && $(MAKE) $@)
-	@(cd ./libs/ncurses_lib && $(MAKE) $@)
-	@(cd ./libs/opengl_lib && $(MAKE) $@)
 
 fclean:			clean
 	@printf "\033[31mRemove binary\033[0m\n"
@@ -75,10 +72,26 @@ fclean:			clean
 lib:
 	@make -C ./libs/ncurses_lib/
 	@make -C ./libs/opengl_lib/
+	@make -C ./libs/sdl_lib/
 
-re-libs:
+re-lib:
 	@make re -C ./libs/ncurses_lib/
 	@make re -C ./libs/opengl_lib/
+	@make re -C ./libs/sdl_lib/
+
+clean-lib:
+	@make clean -C ./libs/ncurses_lib/
+	@make clean -C ./libs/opengl_lib/
+	@make clean -C ./libs/sdl_lib/
+
+fclean-lib:
+	@make fclean -C ./libs/ncurses_lib/
+	@make fclean -C ./libs/opengl_lib/
+	@make fclean -C ./libs/sdl_lib/
+
+install-lib:
+	@make install -C ./libs/opengl_lib/
+	@make install -C ./libs/sdl_lib/
 
 re:				fclean all
 

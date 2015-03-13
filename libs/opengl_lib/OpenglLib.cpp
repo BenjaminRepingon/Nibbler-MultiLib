@@ -145,10 +145,6 @@ void		OpenglLib::drawSquare( int posX, int posY, int size, int color ) const
 
 void		OpenglLib::drawLine( float x1, float y1, float x2, float y2, int color ) const
 {
-	(void)x1;
-	(void)x2;
-	(void)y1;
-	(void)y2;
 	float tmp;
 	if (x2 < x1)
 	{
@@ -178,6 +174,3 @@ void		OpenglLib::drawLine( float x1, float y1, float x2, float y2, int color ) c
 	}
 	return ;
 }
-
-
-

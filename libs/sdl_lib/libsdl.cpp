@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libmlx.hpp                                         :+:      :+:    :+:   */
+/*   libsdl.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/04 14:33:53 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/04 16:29:44 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/03/04 13:16:52 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/03/13 10:32:12 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBMLX_HPP
-# define LIBMLX_HPP
-# include "../../ILib.hpp"
+#include "SdlLib.hpp"
 
 extern "C"
-ILib *		getInstance( void );
-
-#endif
+ILib *		getInstance( void )
+{
+	return ( new SdlLib() );
+}

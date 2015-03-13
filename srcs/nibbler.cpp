@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:04:58 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/12 12:35:45 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 13:52:20 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int		main(int argc, char const *argv[])
 	if (!checkParams(argc, argv))
 		return 0;
 
-	handle = dlopen( "./libs/ncurses_lib/libncurses.dylib", RTLD_NOW );
+	handle = dlopen( "./libs/sdl_lib/libsdl.dylib", RTLD_NOW );
+	// handle = dlopen( "./libs/ncurses_lib/libncurses.dylib", RTLD_NOW );
 	// handle = dlopen( "./libs/opengl_lib/libopengl.dylib", RTLD_NOW );
 	if ( (err = dlerror()) != NULL )
 	{

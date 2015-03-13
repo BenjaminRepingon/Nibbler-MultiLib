@@ -6,32 +6,35 @@
 #    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/04 13:58:28 by rbenjami          #+#    #+#              #
-#    Updated: 2015/03/05 18:06:50 by rbenjami         ###   ########.fr        #
+#    Updated: 2015/03/13 12:20:04 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	libmlx
+NAME		=	libsdl
 
 CC			=	g++
 
 CFLAGS		=	-Wall -Wextra -Werror -pedantic -ansi -O3
 
 SRC_LIB		=	$(NAME).cpp		\
-				MlxLib.cpp
+				SdlLib.cpp
 
 OBJ_LIB		=	$(SRC_LIB:.cpp=.o)
 
 HEAD		=	$(NAME).hpp
 
+INC			=	-I ~/.brew/include/
+
+LIB			=	-L ~/.brew/lib/ -lSDL2
 
 all:		$(NAME).dylib
 
 $(NAME).dylib:	$(OBJ_LIB)
-	@g++ -shared -o $(NAME).dylib $(OBJ_LIB)
+	@g++ -shared -o $(NAME).dylib $(OBJ_LIB) $(LIB)
 	@printf "\033[33mCompilation of %-40s \033[34m[\033[32m✔\033[34m]\033[0m\n" $(NAME)
 
 %.o:		%.cpp $(HEAD)
-	@$(CC) $(CFLAGS) -fpic -c $< -o $@
+	@$(CC) $(CFLAGS) -fpic -c $< -o $@ $(INC)
 	@printf "\t%-48s\033[34m[\033[32m✔\033[34m]\033[0m\n" $<
 
 clean:
@@ -41,6 +44,15 @@ clean:
 fclean:			clean
 	@printf "\033[31mRemove binary\033[0m\n"
 	@rm -rf $(NAME).dylib
+
+install:
+	@if [ ! -d "~/.brew" ] ; \
+	then \
+		brew update; \
+	fi;
+	@mkdir -p ~/Library/Caches
+	@mkdir -p ~/Library/Caches/Homebrew
+	@~/.brew/bin/brew install sdl2
 
 re:			fclean all
 
