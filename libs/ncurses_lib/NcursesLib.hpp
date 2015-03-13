@@ -35,7 +35,6 @@ public:
 	void				updateKeys( void );
 	void				drawSquare( int posX, int posY, int size, int color ) const;
 	void				drawLine( float x1, float y1, float x2, float y2, int color ) const;
-	void				drawText( float x1, float y1, char* s, int points, int color ) const;
 
 	static std::map<int, int>	_colors;
 private:

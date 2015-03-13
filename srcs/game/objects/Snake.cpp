@@ -48,7 +48,6 @@ int			Snake::update( ILib const * lib, double delta )
 		this->_components[i]->update( lib, delta );
 	this->_components[0]->setPos(this->_components[0]->getPos() + this->_dir);
 	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
-	lib->drawText( game->getWidth()+2, 5, "Player1", _points , 0xFFFFFF );
 	return ( true );
 }
 
