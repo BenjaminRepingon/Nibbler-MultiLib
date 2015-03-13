@@ -6,18 +6,20 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/12 12:16:42 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:43:41 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <dlfcn.h>
 #include "CoreEngine.hpp"
 
-CoreEngine::CoreEngine( float fps, ILib * lib ) :
+CoreEngine::CoreEngine( float fps, int lib ) :
 	_fps( fps ),
-	_renderLib( lib ),
 	_game( NULL ),
-	_isRunning( false )
+	_isRunning( false ),
+	_lib( lib )
 {
+	loadLib( "./libs/ncurses_lib/libncurses.dylib" );
 	return ;
 }
 
@@ -49,6 +51,65 @@ double			CoreEngine::getTime( void )
 	return ( tv.tv_sec + (double)tv.tv_usec / SECOND );
 }
 
+void			CoreEngine::loadLib( std::string lib )
+{
+	char *			err;
+	ILib *			(*f)( void );
+
+	this->_handle = dlopen( lib.c_str(), RTLD_NOW );
+	// handle = dlopen( "./libs/opengl_lib/libopengl.dylib", RTLD_NOW );
+	// handle = dlopen( "./libs/sdl_lib/libsdl.dylib", RTLD_NOW );
+	if ( (err = dlerror()) != NULL )
+	{
+		std::cerr << err << std::endl;
+		exit( 0 );
+		return ;
+	}
+	f = ( ILib *(*)() ) dlsym( this->_handle, "getInstance" );
+	if ( (err = dlerror()) != NULL )
+	{
+		std::cerr << err << std::endl;
+		return ;
+	}
+	// delete this->_renderLib;
+	this->_renderLib = f();
+}
+
+void			CoreEngine::switchLib( void )
+{
+	std::string lib;
+
+	if ( this->_lib != 1 && this->_renderLib->isKeyPressed( ILib::F1 ) )
+	{
+		lib = "./libs/ncurses_lib/libncurses.dylib";
+		this->_lib = 1;
+	}
+	else if ( this->_lib != 2 && this->_renderLib->isKeyPressed( ILib::F2 ) )
+	{
+		lib = "./libs/opengl_lib/libopengl.dylib";
+		this->_lib = 2;
+	}
+	else if ( this->_lib != 3 && this->_renderLib->isKeyPressed( ILib::F3 ) )
+	{
+		lib = "./libs/sdl_lib/libsdl.dylib";
+		this->_lib = 3;
+	}
+	else
+		return ;
+	this->_renderLib->destroyWindow();
+	dlclose( this->_handle );
+	loadLib( lib );
+
+	if ( ! this->_renderLib->createWindow( 850, 550, "Test" ) )
+	{
+		std::cerr << "Failed to create window !" << std::endl;
+		return ;
+	}
+	this->_renderLib->updateKeys();
+
+	return ;
+}
+
 bool			CoreEngine::start( void )
 {
 	double		startFrame;
@@ -76,6 +137,7 @@ bool			CoreEngine::start( void )
 	{
 		startFrame = this->getTime();
 		this->_renderLib->updateKeys();
+		this->switchLib();
 		this->_renderLib->clearWindow();
 		if ( this->_renderLib->isCloseRequest())
 		{

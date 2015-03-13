@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:03:16 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 16:22:58 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:34:03 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class CoreEngine
 {
 public:
-	CoreEngine( float fps, ILib * lib );
+	CoreEngine( float fps, int lib );
 	CoreEngine( CoreEngine const & src );
 	~CoreEngine( void );
 
@@ -45,11 +45,15 @@ public:
 private:
 	CoreEngine( void );
 	double					getTime( void );
+	void					loadLib( std::string lib );
+	void					switchLib( void );
 
+	void *					_handle;
 	float					_fps;
 	ILib *					_renderLib;
 	AGame *					_game;
 	bool					_isRunning;
+	int						_lib;
 };
 
 #endif
