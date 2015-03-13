@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
 #include "core/CoreEngine.hpp"
 #include "game/Nibbler.hpp"
 
@@ -44,21 +43,7 @@ int		main(int argc, char const *argv[])
 	if (!checkParams(argc, argv))
 		return 0;
 
-	// handle = dlopen( "./libs/ncurses_lib/libncurses.dylib", RTLD_NOW );
-	// // handle = dlopen( "./libs/opengl_lib/libopengl.dylib", RTLD_NOW );
-	// // handle = dlopen( "./libs/sdl_lib/libsdl.dylib", RTLD_NOW );
-	// if ( (err = dlerror()) != NULL )
-	// {
-	// 	std::cerr << err << std::endl;
-	// 	return ( -1 );
-	// }
-	// f = ( ILib *(*)() ) dlsym( handle, "getInstance" );
-	// if ( (err = dlerror()) != NULL )
-	// {
-	// 	std::cerr << err << std::endl;
-	// 	return ( -1 );
-	// }
-	// lib = f();
+
 	core = new CoreEngine( 8, 1 );
 
 	nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]) );

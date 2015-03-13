@@ -30,17 +30,17 @@ int				Nibbler::init( void )
 	_labyrinthe = new Labyrinthe( _width, _height, 0 );
 	_food = new Food(5);
 	_snake = new Snake( 10, 10, 5 );
-	
-	_snake2 = new Snake( 6, 6, 5 );
-	_snake2->setNewControls(1);
-	_snake2->setBasicColor(0x99CC00);
+	_snake2 = NULL;
+	// _snake2 = new Snake( 6, 6, 5 );
+	// _snake2->setNewControls(1);
+	// _snake2->setBasicColor(0x99CC00);
 
 
 	addObject( _limit );
 	addObject( _labyrinthe );
 	addObject( _food );
 	addObject( _snake );
-	addObject( _snake2 );
+	// addObject( _snake2 );
 
 	//we pop food so it dosent collide with anything
 	std::vector<AComponent *> foodElements = _food->getComponents();
@@ -155,7 +155,7 @@ void		Nibbler::popFood( int i, std::vector<AComponent *> foodElements )
 	int x = (rand() % (this->getWidth() - 1)+ 1);
 	int y = (rand() % (this->getHeight() - 1) ) + 1;
 
-	_food->getComponents()[i]->setPos(Vec2i(  x,  y));
+	_food->getComponents()[i]->setPos(Vec2i( x,  y));
 	if (checkBasicCollision(_food->getComponents()[i]) || checkWallCollision(_food->getComponents()[i]) || checkFoodCollision(_food->getComponents()[i], i))
 		popFood(i, foodElements);
 	return ;
