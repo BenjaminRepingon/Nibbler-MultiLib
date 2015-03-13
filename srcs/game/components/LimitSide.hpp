@@ -9,6 +9,10 @@ public:
 	// LimitSide( void );
 	LimitSide( Vec2i const & a, Vec2i const & b);
 	~LimitSide( void );
+	LimitSide( LimitSide const & src );
+
+	LimitSide &					operator=( LimitSide const & rhs );
+
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 };

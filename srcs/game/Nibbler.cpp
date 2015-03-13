@@ -6,13 +6,12 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 17:41:29 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 11:04:47 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:50:54 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Nibbler.hpp"
 
-#warning "TODO: copilian form for Nibbler"
 Nibbler::Nibbler( int sizex, int sizey ):
 _width( sizex ), _height( sizey ), _level(0)
 {
@@ -22,6 +21,20 @@ _width( sizex ), _height( sizey ), _level(0)
 Nibbler::~Nibbler( void )
 {
 	return ;
+}
+
+Nibbler::Nibbler( Nibbler const & src )
+{
+	*this = src;
+}
+
+Nibbler &	Nibbler::operator=( Nibbler const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int				Nibbler::init( void )
@@ -150,7 +163,7 @@ int			Nibbler::checkBasicCollision( AComponent *element )
 	std::vector<AComponent *> snake = _snake->getComponents();
 	for (int k = 1;  k < (int)snake.size() ; k++)
 	{
-		
+
 		if ( element->getPos() == snake[k]->getPos())
 			return true;
 		if ( _width <= snake[k]->getPos().getX() || _height <= snake[k]->getPos().getY()

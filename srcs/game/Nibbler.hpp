@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 17:41:36 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/05 16:10:23 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:50:36 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Nibbler : public AGame
 public:
 	Nibbler( int, int );
 	virtual ~Nibbler( void );
+	Nibbler( Nibbler const & src );
+
+	Nibbler &				operator=( Nibbler const & rhs );
 
 	virtual int				init( void );
 	int						getWidth( void );

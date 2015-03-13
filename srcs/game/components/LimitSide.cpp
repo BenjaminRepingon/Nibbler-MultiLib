@@ -1,7 +1,6 @@
 
 #include "LimitSide.hpp"
 
-#warning "TODO: copilian form for LimitSide"
 LimitSide::LimitSide( Vec2i const & a, Vec2i const & b )
 {
 	setPos( a );
@@ -12,6 +11,20 @@ LimitSide::LimitSide( Vec2i const & a, Vec2i const & b )
 LimitSide::~LimitSide( void )
 {
 	return ;
+}
+
+LimitSide::LimitSide( LimitSide const & src )
+{
+	*this = src;
+}
+
+LimitSide &	LimitSide::operator=( LimitSide const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			LimitSide::update( ILib const * lib, double delta )

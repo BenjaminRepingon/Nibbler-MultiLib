@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:54:03 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/12 12:31:49 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:58:38 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-#warning "TODO: copilian form for Snake"
 Snake::Snake( int posX, int posY, size_t nbPart) :
 	_pos( posX, posY ),
 	_nbPart( nbPart ),
 	_invincible( false ),
-	_speed( 1 ),
 	_points( 0 )
 {
 	return ;
@@ -32,9 +29,22 @@ Snake::~Snake( void )
 	return ;
 }
 
+Snake::Snake( Snake const & src )
+{
+	*this = src;
+}
+
+Snake &	Snake::operator=( Snake const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
+}
+
 int			Snake::update( ILib const * lib, double delta )
 {
-	float speed = this->_speed * delta;
 	if (lib->isKeyPressed(ILib::DOWN) && this->_dir != Vec2i(0, -1))
 		this->_dir = Vec2i(0, 1);
 	else if (lib->isKeyPressed(ILib::UP) && this->_dir != Vec2i(0, 1))
@@ -47,18 +57,14 @@ int			Snake::update( ILib const * lib, double delta )
 	for ( size_t i = this->_components.size() - 1; i > 0; i-- )
 		this->_components[i]->update( lib, delta );
 	this->_components[0]->setPos(this->_components[0]->getPos() + this->_dir);
-	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
 	return ( true );
 }
 
 void						Snake::init( void )
 {
-	Nibbler *game = static_cast<Nibbler*>( this->getGame() );
-
 	addComponent( new SnakePart( Vec2i( this->_pos.getX(), this->_pos.getY() ), 1, NULL ) );
 	for ( size_t i = 1; i < this->_nbPart; i++ )
 	{
-		#warning "TODO: set SnakePart correctly !"
 		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1, static_cast<SnakePart*>(getComponents()[i - 1] )) );
 	}
 	this->_dir = Vec2i(0, 1);

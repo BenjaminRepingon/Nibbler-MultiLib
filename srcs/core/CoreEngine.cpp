@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 14:43:41 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 15:19:40 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void			CoreEngine::loadLib( std::string lib )
 	ILib *			(*f)( void );
 
 	this->_handle = dlopen( lib.c_str(), RTLD_NOW );
-	// handle = dlopen( "./libs/opengl_lib/libopengl.dylib", RTLD_NOW );
-	// handle = dlopen( "./libs/sdl_lib/libsdl.dylib", RTLD_NOW );
 	if ( (err = dlerror()) != NULL )
 	{
 		std::cerr << err << std::endl;
@@ -71,7 +69,6 @@ void			CoreEngine::loadLib( std::string lib )
 		std::cerr << err << std::endl;
 		return ;
 	}
-	// delete this->_renderLib;
 	this->_renderLib = f();
 }
 

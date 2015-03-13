@@ -3,7 +3,7 @@
 # include "../../core/GameObject.hpp"
 # include "../components/FoodElement.hpp"
 # include "../components/PotionElement.hpp"
-# include <cstdlib> 
+# include <cstdlib>
 
 class Food : public GameObject
 {
@@ -11,6 +11,9 @@ public:
 	// Food( void );
 	Food( int nbr );
 	~Food( void );
+	Food( Food const & src );
+
+	Food &						operator=( Food const & rhs );
 
 	virtual void				init( void );
 

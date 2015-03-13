@@ -6,14 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 14:57:47 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 10:50:12 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:49:03 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GameObject.hpp"
 #include "AGame.hpp"
 
-#warning "TODO: copilian form for GameObject"
 GameObject::GameObject( void )
 {
 	return ;
@@ -22,6 +21,20 @@ GameObject::GameObject( void )
 GameObject::~GameObject( void )
 {
 	return ;
+}
+
+GameObject::GameObject( GameObject const & src )
+{
+	*this = src;
+}
+
+GameObject &	GameObject::operator=( GameObject const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			GameObject::update( ILib const * lib, double delta )
@@ -61,5 +74,5 @@ AGame*						GameObject::getGame( void ) const
 
 void						GameObject::init( void )
 {
-	
+
 }

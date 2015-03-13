@@ -9,6 +9,10 @@ public:
 	// FoodElement( void );
 	FoodElement( Vec2i const & pos);
 	~FoodElement( void );
+	FoodElement( FoodElement const & src );
+
+	FoodElement &				operator=( FoodElement const & rhs );
+
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 };

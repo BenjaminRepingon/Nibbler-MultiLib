@@ -1,7 +1,6 @@
 
 #include "PotionElement.hpp"
 
-#warning "TODO: copilian form for PotionElement"
 PotionElement::PotionElement( Vec2i const & pos )
 {
 	setPos( pos );
@@ -12,6 +11,20 @@ PotionElement::PotionElement( Vec2i const & pos )
 PotionElement::~PotionElement( void )
 {
 	return ;
+}
+
+PotionElement::PotionElement( PotionElement const & src )
+{
+	*this = src;
+}
+
+PotionElement &	PotionElement::operator=( PotionElement const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			PotionElement::update( ILib const * lib, double delta )

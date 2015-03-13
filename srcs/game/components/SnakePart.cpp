@@ -6,13 +6,12 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:53:47 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/11 18:34:15 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:51:40 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SnakePart.hpp"
 
-#warning "TODO: copilian form for SnakePart"
 SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :
 	_size( size ), _parent(parent), _colour(0xFF0000)
 {
@@ -23,6 +22,20 @@ SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :
 SnakePart::~SnakePart( void )
 {
 	return ;
+}
+
+SnakePart::SnakePart( SnakePart const & src )
+{
+	*this = src;
+}
+
+SnakePart &	SnakePart::operator=( SnakePart const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			SnakePart::update( ILib const * lib, double delta )

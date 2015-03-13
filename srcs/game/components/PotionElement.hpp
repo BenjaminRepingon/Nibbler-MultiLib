@@ -12,7 +12,11 @@ class PotionElement : public AComponent
 public:
 	// PotionElement( void );
 	PotionElement( Vec2i const & pos);
+	PotionElement( void );
 	~PotionElement( void );
+	PotionElement( PotionElement const & src );
+
+	PotionElement &				operator=( PotionElement const & rhs );
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 	double						getTime( void );

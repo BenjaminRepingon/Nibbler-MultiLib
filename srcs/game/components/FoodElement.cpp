@@ -1,7 +1,6 @@
 
 #include "FoodElement.hpp"
 
-#warning "TODO: copilian form for FoodElement"
 FoodElement::FoodElement( Vec2i const & pos )
 {
 	setPos( pos );
@@ -11,6 +10,20 @@ FoodElement::FoodElement( Vec2i const & pos )
 FoodElement::~FoodElement( void )
 {
 	return ;
+}
+
+FoodElement::FoodElement( FoodElement const & src )
+{
+	*this = src;
+}
+
+FoodElement &	FoodElement::operator=( FoodElement const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			FoodElement::update( ILib const * lib, double delta )

@@ -10,6 +10,10 @@ public:
 	// Wall( void );
 	Wall( float x1, float y1, float x2, float y2 );
 	~Wall( void );
+	Wall( Wall const & src );
+
+	Wall &						operator=( Wall const & rhs );
+
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 

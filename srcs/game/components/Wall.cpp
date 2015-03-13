@@ -1,7 +1,6 @@
 
 #include "Wall.hpp"
 
-#warning "TODO: copilian form for Wall"
 Wall::Wall( float x1, float y1, float x2, float y2 )
 {
 	static int t = 0;
@@ -25,6 +24,20 @@ Wall::Wall( float x1, float y1, float x2, float y2 )
 Wall::~Wall( void )
 {
 	return ;
+}
+
+Wall::Wall( Wall const & src )
+{
+	*this = src;
+}
+
+Wall &	Wall::operator=( Wall const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 int			Wall::update( ILib const * lib, double delta )

@@ -9,6 +9,10 @@ public:
 	// Labyrinthe( void );
 	Labyrinthe(  float width, float height, int nbr );
 	~Labyrinthe( void );
+	Labyrinthe( Labyrinthe const & src );
+
+	Labyrinthe &				operator=( Labyrinthe const & rhs );
+
 	virtual void				init( void );
 
 	void			addWalls( int nbr );

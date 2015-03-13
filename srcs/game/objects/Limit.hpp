@@ -9,6 +9,10 @@ public:
 	// Limit( void );
 	Limit( float width, float height );
 	~Limit( void );
+	Limit( Limit const & src );
+
+	Limit &						operator=( Limit const & rhs );
+
 	virtual void				init( void );
 
 private:

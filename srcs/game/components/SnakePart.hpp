@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/05 15:54:55 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/06 12:12:09 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/13 14:51:36 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ public:
 	// SnakePart( void );
 	SnakePart( Vec2i const & pos, int size, SnakePart *parent );
 	~SnakePart( void );
+	SnakePart( SnakePart const & src );
+
+	SnakePart &					operator=( SnakePart const & rhs );
+
 	virtual int					update( ILib const * lib, double delta );
 	virtual int					render( ILib const * lib ) const;
 	void						setParent( SnakePart * parent );

@@ -1,6 +1,5 @@
 #include "Food.hpp"
 
-#warning "TODO: copilian form for Food"
 Food::Food( int nbr ) :
 	_nbr( nbr )
 {
@@ -10,6 +9,20 @@ Food::Food( int nbr ) :
 Food::~Food( void )
 {
 	return ;
+}
+
+Food::Food( Food const & src )
+{
+	*this = src;
+}
+
+Food &	Food::operator=( Food const & rhs )
+{
+	if ( this != &rhs )
+	{
+
+	}
+	return ( *this );
 }
 
 void		Food::init( void )
