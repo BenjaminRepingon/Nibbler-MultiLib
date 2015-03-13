@@ -40,4 +40,5 @@ int			AGame::isRunnig( void )
 int			AGame::setRunnig( int state )
 {
 	this->_isRunning = state;
+	return true;
 }

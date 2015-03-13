@@ -77,7 +77,11 @@ void		NcursesLib::updateKeys( void )
 		{DOWN, KEY_DOWN},
 		{F1, '1'},
 		{F2, '2'},
-		{F3, '3'}
+		{F3, '3'},
+		{D, 100},
+		{A, 97},
+		{W, 119},
+		{S, 115}
 	};
 
 	int ch;

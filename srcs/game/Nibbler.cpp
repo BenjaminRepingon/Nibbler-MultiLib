@@ -30,11 +30,17 @@ int				Nibbler::init( void )
 	_labyrinthe = new Labyrinthe( _width, _height, 0 );
 	_food = new Food(5);
 	_snake = new Snake( 10, 10, 5 );
+	
+	_snake2 = new Snake( 6, 6, 5 );
+	_snake2->setNewControls(1);
+	_snake2->setBasicColor(0x99CC00);
+
 
 	addObject( _limit );
 	addObject( _labyrinthe );
 	addObject( _food );
 	addObject( _snake );
+	addObject( _snake2 );
 
 	//we pop food so it dosent collide with anything
 	std::vector<AComponent *> foodElements = _food->getComponents();
@@ -66,7 +72,18 @@ int			Nibbler::update( ILib const * lib, double delta )
 		this->setRunnig(false);
 	if (_snake->getInvincible() && this->checkBasicCollision(_snake->getComponents()[0]))
 		this->setRunnig(false);
-	this->checkFoodCollision(_snake->getComponents()[0]);
+	this->checkFoodCollision(_snake->getComponents()[0], _snake);
+
+	if (_snake2 != NULL)
+	{
+		if (!_snake2->getInvincible() && (this->checkBasicCollision(_snake2->getComponents()[0])
+			|| this->checkWallCollision(_snake2->getComponents()[0]) ))
+			this->setRunnig(false);
+		if (_snake2->getInvincible() && this->checkBasicCollision(_snake2->getComponents()[0]))
+			this->setRunnig(false);
+		this->checkFoodCollision(_snake2->getComponents()[0], _snake2);		
+	}
+
 	this->checkLevel();
 	return ( true );
 }
@@ -96,21 +113,21 @@ void	Nibbler::checkLevel( void )
 	return ;
 }
 
-int			Nibbler::checkFoodCollision( AComponent *element )
+int			Nibbler::checkFoodCollision( AComponent *element, Snake* snake )
 {
 	std::vector<AComponent *> foodElements = _food->getComponents();
 	for (int i = 0;  i < (int)foodElements.size() ; i++)
 	{
 		if ( foodElements[i]->getPos() == element->getPos() && i == ((int)foodElements.size() - 1))
 		{
-			_snake->setInvincible(true);
+			snake->setInvincible(true);
 			popFood(i, foodElements );
-			_snake->setColour(0xFFFFFF);
+			snake->setColour( snake->getPowerColor() );
 			return true;
 		}
 		if ( foodElements[i]->getPos() == element->getPos())
 		{
-			_snake->grow();
+			snake->grow();
 			popFood(i, foodElements );
 			return true;
 		}
@@ -125,7 +142,7 @@ int			Nibbler::checkFoodCollision( AComponent *element, int j )
 	{
 		if ( foodElements[i]->getPos() == element->getPos() && j != i)
 		{
-			_snake->grow();
+			// _snake->grow();
 			popFood(i, foodElements );
 			return true;
 		}
@@ -156,6 +173,19 @@ int			Nibbler::checkBasicCollision( AComponent *element )
 		if ( _width <= snake[k]->getPos().getX() || _height <= snake[k]->getPos().getY()
 				|| 0 >= snake[k]->getPos().getX() || 0 >= snake[k]->getPos().getY())
 			return true;
+	}
+	if (_snake2 != NULL)
+	{
+		std::vector<AComponent *> snake = _snake2->getComponents();
+		for (int k = 1;  k < (int)snake.size() ; k++)
+		{
+			
+			if ( element->getPos() == snake[k]->getPos())
+				return true;
+			if ( _width <= snake[k]->getPos().getX() || _height <= snake[k]->getPos().getY()
+					|| 0 >= snake[k]->getPos().getX() || 0 >= snake[k]->getPos().getY())
+				return true;
+		}
 	}
 	return false;
 }

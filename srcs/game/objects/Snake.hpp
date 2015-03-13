@@ -34,6 +34,12 @@ public:
 	double						getTime( void );
 	void						setColour( int c );
 	int 						getPoints( void );
+	void						setNewControls( int );
+	void						setBasicColor( int );
+	int							getBasicColor( void );
+	void						setPowerColor( int );
+	int							getPowerColor( void );
+
 private:
 	Vec2i						_pos;
 	Vec2i						_dir;
@@ -46,8 +52,11 @@ private:
 	// Labyrinthe					*_labyrinthe;
 
 	float						_speed;
-
 	int							_points;
+	int							_setNewControls;
+	int							_basicColor;
+	int							_powerColor;
+
 
 	// int							checkCollision( void );
 
