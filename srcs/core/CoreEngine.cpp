@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/03 16:02:44 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/03/13 15:19:40 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/03/16 10:40:56 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			CoreEngine::loadLib( std::string lib )
 	char *			err;
 	ILib *			(*f)( void );
 
-	this->_handle = dlopen( lib.c_str(), RTLD_NOW );
+	this->_handle = dlopen( lib.c_str(), RTLD_LAZY | RTLD_LOCAL );
 	if ( (err = dlerror()) != NULL )
 	{
 		std::cerr << err << std::endl;
@@ -113,6 +113,7 @@ bool			CoreEngine::start( void )
 	double		startFrame;
 	double		endFrame;
 	double		dt;
+	int			sleep;
 
 	if ( this->_isRunning == true )
 	{
@@ -150,11 +151,11 @@ bool			CoreEngine::start( void )
 
 		endFrame = this->getTime();
 		dt = (endFrame - startFrame);
-		// usleep( 200000 );
-		usleep( (SECOND / this->_fps) - (dt * SECOND) );
-#if DEBUG
-		// std::cout << "FPS: " << 1.0 / (this->getTime() - startFrame) << std::endl;
-#endif
+		sleep = (SECOND / this->_fps) - (dt * SECOND);
+		if ( sleep > 0 )
+			usleep( sleep );
+		else
+			usleep( 1 );
 	}
 	this->stop();
 	return ( true );
