@@ -13,7 +13,7 @@ Limit::~Limit( void )
 	return ;
 }
 
-Limit::Limit( Limit const & src )
+Limit::Limit( Limit const & src ): GameObject( )
 {
 	*this = src;
 }

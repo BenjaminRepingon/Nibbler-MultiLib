@@ -21,7 +21,7 @@
 class Nibbler : public AGame
 {
 public:
-	Nibbler( int, int );
+	Nibbler( int, int, int );
 	virtual ~Nibbler( void );
 	Nibbler( Nibbler const & src );
 
@@ -42,6 +42,7 @@ private:
 	int						_width;
 	int						_height;
 
+
 	Snake*					_snake;
 	Snake*					_snake2;
 	Food*					_food;
@@ -49,6 +50,7 @@ private:
 	Labyrinthe*				_labyrinthe;
 
 	int 					_level;
+	int						_hasOtherPlayer;
 };
 
 #endif

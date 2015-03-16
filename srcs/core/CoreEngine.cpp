@@ -130,6 +130,7 @@ bool			CoreEngine::start( void )
 		std::cerr << "Failed to create window !" << std::endl;
 		return ( false );
 	}
+	dt = 1 / this->_fps;
 	this->_isRunning = true;
 	this->_game->init();
 	while ( this->_isRunning && this->_game->isRunnig())
@@ -187,8 +188,14 @@ void			CoreEngine::setrenderLib( ILib * renderLib )
 	return ;
 }
 
+void			CoreEngine::setFPS( int fps )
+{
+	this->_fps = fps;
+}
+
 void			CoreEngine::setGame( AGame * game )
 {
 	this->_game = game;
+	this->_game->setCore(this);
 	return ;
 }

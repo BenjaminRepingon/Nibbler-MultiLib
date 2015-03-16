@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../core/CoreEngine.hpp"
 #include "Nibbler.hpp"
 
-Nibbler::Nibbler( int sizex, int sizey ):
-_width( sizex ), _height( sizey ), _level(0)
+Nibbler::Nibbler( int sizex, int sizey, int otherPlayer ):
+_width( sizex ), _height( sizey ), _level(0), _hasOtherPlayer( otherPlayer )
 {
 	return ;
 }
@@ -43,17 +44,22 @@ int				Nibbler::init( void )
 	_labyrinthe = new Labyrinthe( _width, _height, 0 );
 	_food = new Food(5);
 	_snake = new Snake( 10, 10, 5 );
-	// _snake2 = NULL;
-	_snake2 = new Snake( 6, 6, 5 );
-	_snake2->setNewControls(1);
-	_snake2->setBasicColor(0x99CC00);
-
-
+	if (_hasOtherPlayer)
+	{
+		_snake2 = new Snake( 6, 6, 5 );
+		_snake2->setNewControls(1);
+		_snake2->setBasicColor(0x99CC00);
+	}
+	else
+	{
+		_snake2 = NULL;	
+	}
 	addObject( _limit );
 	addObject( _labyrinthe );
 	addObject( _food );
 	addObject( _snake );
-	addObject( _snake2 );
+	if (_hasOtherPlayer)
+		addObject( _snake2 );
 
 	//we pop food so it dosent collide with anything
 	std::vector<AComponent *> foodElements = _food->getComponents();
@@ -103,25 +109,29 @@ int			Nibbler::update( ILib const * lib, double delta )
 
 void	Nibbler::checkLevel( void )
 {
-	if (this->_snake->getPoints() > 10 && this->_level == 0)
+	if (this->_snake->getPoints() > 5 && this->_level == 0)
 	{
 		this->_level++;
 		this->_labyrinthe->addWalls(2);
+		this->getCore()->setFPS( 12 );
 	}
-	if (this->_snake->getPoints() > 20 && this->_level == 1)
+	if (this->_snake->getPoints() > 10 && this->_level == 1)
 	{
 		this->_level++;
-		this->_labyrinthe->addWalls(2);
+		this->_labyrinthe->addWalls(2);	
+		this->getCore()->setFPS( 16 );
 	}
-	if (this->_snake->getPoints() > 30 && this->_level == 2)
-	{
-		this->_level++;
-		this->_labyrinthe->addWalls(1);
-	}
-	if (this->_snake->getPoints() > 40 && this->_level == 3)
+	if (this->_snake->getPoints() > 15 && this->_level == 2)
 	{
 		this->_level++;
 		this->_labyrinthe->addWalls(1);
+		this->getCore()->setFPS( 22 );
+	}
+	if (this->_snake->getPoints() > 20 && this->_level == 3)
+	{
+		this->_level++;
+		this->_labyrinthe->addWalls(1);
+		this->getCore()->setFPS( 26 );
 	}
 	return ;
 }

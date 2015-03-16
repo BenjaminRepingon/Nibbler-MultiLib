@@ -17,7 +17,7 @@ int checkParams(int ac, char const *av[])
 {
 	int x;
 	int y;
-	if (ac == 3)
+	if (ac == 3 || ac == 4)
 	{
 		x = atoi(av[1]);
 		y = atoi(av[2]);
@@ -40,8 +40,10 @@ int		main(int argc, char const *argv[])
 		return 0;
 
 	core = new CoreEngine( 8, 1 );
-
-	nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]) );
+	if (argc == 4)
+		nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]), 1 );
+	else
+		nibbler = new Nibbler( atoi(argv[1]), atoi(argv[2]), 0 );
 
 	core->setGame( nibbler );
 	core->start();

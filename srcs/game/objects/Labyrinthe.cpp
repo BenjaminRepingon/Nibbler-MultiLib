@@ -11,7 +11,7 @@ Labyrinthe::~Labyrinthe( void )
 	return ;
 }
 
-Labyrinthe::Labyrinthe( Labyrinthe const & src )
+Labyrinthe::Labyrinthe( Labyrinthe const & src ): GameObject( )
 {
 	*this = src;
 }

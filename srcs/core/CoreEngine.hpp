@@ -41,7 +41,7 @@ public:
 	*/
 	void					setrenderLib( ILib * renderLib );
 	void					setGame( AGame * game );
-
+	void					setFPS( int fps );
 private:
 	CoreEngine( void );
 	double					getTime( void );

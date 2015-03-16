@@ -32,7 +32,7 @@ Snake::~Snake( void )
 	return ;
 }
 
-Snake::Snake( Snake const & src )
+Snake::Snake( Snake const & src ): GameObject( )
 {
 	*this = src;
 }

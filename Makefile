@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 #DEV, BUID
-MODE			=	DEV
+MODE			=	BUILD
 
 ifeq ($(MODE), DEV)
 	CPPFLAGS	=	-Wall -Wextra -ansi -O3 -DDEBUG

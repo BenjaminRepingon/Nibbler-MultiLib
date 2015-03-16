@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "CoreEngine.hpp"
 #include "GameObject.hpp"
 #include "AGame.hpp"
 
@@ -44,4 +45,14 @@ int			AGame::setRunnig( int state )
 {
 	this->_isRunning = state;
 	return true;
+}
+
+void		AGame::setCore( CoreEngine *core )
+{
+	this->_core = core;
+}
+
+CoreEngine*	AGame::getCore( void )
+{
+	return this->_core;
 }

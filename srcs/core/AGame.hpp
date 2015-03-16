@@ -17,6 +17,7 @@
 
 # include "../../ILib.hpp"
 
+class CoreEngine;
 class GameObject;
 class AGame
 {
@@ -29,10 +30,13 @@ public:
 	virtual int					render( ILib const * lib ) const;
 	virtual int					isRunnig( void );
 	virtual int					setRunnig( int state );
+	void						setCore( CoreEngine *core );
+	CoreEngine*					getCore( void );
 
 protected:
 	int							_isRunning;
 	std::vector<GameObject *>	_objects;
+	CoreEngine*					_core;
 };
 
 #endif
