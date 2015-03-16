@@ -47,7 +47,7 @@ int				Nibbler::init( void )
 	_snake2 = new Snake( 6, 6, 5 );
 	_snake2->setNewControls(1);
 	_snake2->setBasicColor(0x99CC00);
-
+	_snake2->setHeadColor( 0xCC00CC);
 
 	addObject( _limit );
 	addObject( _labyrinthe );
@@ -142,6 +142,8 @@ int			Nibbler::checkFoodCollision( AComponent *element, Snake* snake )
 		{
 			snake->grow();
 			popFood(i, foodElements );
+						// snake->setColour( snake->getPowerColor() );
+
 			return true;
 		}
 	}

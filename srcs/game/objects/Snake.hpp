@@ -42,6 +42,8 @@ public:
 	int							getBasicColor( void );
 	void						setPowerColor( int );
 	int							getPowerColor( void );
+	void						setHeadColor( int );
+	int							getHeadColor( void );
 
 private:
 	Vec2i						_pos;
@@ -55,6 +57,7 @@ private:
 	int							_setNewControls;
 	int							_basicColor;
 	int							_powerColor;
+	int							_headColor;
 };
 
 #endif

@@ -12,8 +12,8 @@
 
 #include "SnakePart.hpp"
 
-SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent ) :
-	_size( size ), _parent(parent), _colour(0xFF0000)
+SnakePart::SnakePart( Vec2i const & pos, int size, SnakePart *parent, int colour ) :
+	_size( size ), _parent(parent), _colour(colour)
 {
 	setPos( pos );
 	return ;
