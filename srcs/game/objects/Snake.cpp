@@ -22,7 +22,8 @@ Snake::Snake( int posX, int posY, size_t nbPart) :
 	_points( 0 ),
 	_setNewControls(0),
 	_basicColor( 0xff0000 ),
-	_powerColor( 0xFFFFFF )
+	_powerColor( 0xFFFFFF ), 
+	_headColor( 0x0066FF )
 {
 	return ;
 }
@@ -70,10 +71,10 @@ int			Snake::update( ILib const * lib, double delta )
 
 void						Snake::init( void )
 {
-	addComponent( new SnakePart( Vec2i( this->_pos.getX(), this->_pos.getY() ), 1, NULL ) );
+	addComponent( new SnakePart( Vec2i( this->_pos.getX(), this->_pos.getY() ), 1, NULL, _headColor ) );
 	for ( size_t i = 1; i < this->_nbPart; i++ )
 	{
-		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1, static_cast<SnakePart*>(getComponents()[i - 1] )) );
+		addComponent( new SnakePart( Vec2i( this->_pos.getX() - i, this->_pos.getY() ), 1, static_cast<SnakePart*>(getComponents()[i - 1] ), _basicColor) );
 	}
 	this->_dir = Vec2i(0, 1);
 }
@@ -82,7 +83,7 @@ void						Snake::init( void )
 void		Snake::grow( void )
 {
 	SnakePart *parent = static_cast<SnakePart*>(this->getComponents()[this->getComponents().size() - 1]);
-	addComponent( new SnakePart( parent->getPos() , 1, static_cast<SnakePart*>(parent) ) );
+	addComponent( new SnakePart( parent->getPos() , 1, static_cast<SnakePart*>(parent), _basicColor ) );
 	this->_nbPart++;
 	if (this->_invincible)
 		setColour( _powerColor );
@@ -119,7 +120,7 @@ double						Snake::getTime( void )
 
 void						Snake::setColour( int c )
 {
-	for (int i = 0; i < (int)this->getComponents().size(); i++)
+	for (int i = 1; i < (int)this->getComponents().size(); i++)
 		static_cast<SnakePart*>(this->getComponents()[i])->setColour(c);
 	return ;
 }
@@ -150,6 +151,16 @@ int							Snake::getPowerColor( void )
 {
 	return _powerColor;
 }
+
+void						Snake::setHeadColor( int c )
+{
+	_headColor = c;
+}
+int							Snake::getHeadColor( void )
+{
+	return _headColor;
+}
+
 
 
 

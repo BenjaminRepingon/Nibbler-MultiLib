@@ -19,7 +19,7 @@ class SnakePart : public AComponent
 {
 public:
 	// SnakePart( void );
-	SnakePart( Vec2i const & pos, int size, SnakePart *parent );
+	SnakePart( Vec2i const & pos, int size, SnakePart *parent, int colour );
 	~SnakePart( void );
 	SnakePart( SnakePart const & src );
 

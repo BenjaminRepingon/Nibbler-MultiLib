@@ -152,6 +152,8 @@ int			Nibbler::checkFoodCollision( AComponent *element, Snake* snake )
 		{
 			snake->grow();
 			popFood(i, foodElements );
+						// snake->setColour( snake->getPowerColor() );
+
 			return true;
 		}
 	}
