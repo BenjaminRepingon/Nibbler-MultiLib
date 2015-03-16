@@ -16,7 +16,7 @@ MODE			=	BUILD
 ifeq ($(MODE), DEV)
 	CPPFLAGS	=	-Wall -Wextra -ansi -O3 -DDEBUG
 else
-	CPPFLAGS	=	-Wall -Wextra -Werror -pedantic -ansi -O3
+	CPPFLAGS	=	-Wall -Wextra -Werror -ansi -O3
 endif
 
 CC				=	g++
